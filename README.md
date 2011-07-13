@@ -1,4 +1,4 @@
-Êî¼ÙÏîÄ¿
+ï»¿æš‘å‡é¡¹ç›®
 =======================================
 
  - Source: <http://github.com/kissyteam/kissy>
@@ -9,7 +9,7 @@
 
  Vision
 --------
-Ğ¡ÇÉÁé»î£¬¼ò½àÊµÓÃ£¬Ê¹ÓÃÆğÀ´ÈÃÈË¸Ğ¾õÓäÔÃ¡£
+å°å·§çµæ´»ï¼Œç®€æ´å®ç”¨ï¼Œä½¿ç”¨èµ·æ¥è®©äººæ„Ÿè§‰æ„‰æ‚¦ã€‚
 
     Keep It
         Simple & Stupid, Short & Sweet, Slim & Sexy...
@@ -18,29 +18,29 @@
 
  Structure
 -----------
- - build:         ¹¹½¨ºÃµÄ·¢²¼ÎÄ¼ş
- - docs:          API ÎÄµµ
- - src:           Ô´Âë¡¢²âÊÔµÈ¿ª·¢×ÊÔ´
- - tools:         ´ò°üÑ¹ËõµÈ×Ô¶¯»¯¹¤¾ß
+ - build:         æ„å»ºå¥½çš„å‘å¸ƒæ–‡ä»¶
+ - docs:          API æ–‡æ¡£
+ - src:           æºç ã€æµ‹è¯•ç­‰å¼€å‘èµ„æº
+ - tools:         æ‰“åŒ…å‹ç¼©ç­‰è‡ªåŠ¨åŒ–å·¥å…·
 
 
  Convention
 ------------
-Ô­Ôò£º¾¡Á¿±ÜÃâÇ±ÔÚ³åÍ»£¬Í¬Ê±Á¦Çó¾«¼ò¶ÌĞ¡ºÍ¼ûÃûÖªÒâ¡£
+åŸåˆ™ï¼šå°½é‡é¿å…æ½œåœ¨å†²çªï¼ŒåŒæ—¶åŠ›æ±‚ç²¾ç®€çŸ­å°å’Œè§åçŸ¥æ„ã€‚
 
- - È«¾Ö±äÁ¿£º       g_ks_comp_xxx        ±ÈÈç£ºg_ks_suggest_callback
- - class/id ÃüÃû£º ks-comp[-xxx]        ±ÈÈç£ºks-editor-toolbar-item
- - data ÊôĞÔÃüÃû£º  data-ks-comp[-xxx]   ±ÈÈç£ºdata-ks-suggest
- - hook ¹æ·¶£º     KS_Comp              ±ÈÈç£ºKS_Switchable
+ - å…¨å±€å˜é‡ï¼š       g_ks_comp_xxx        æ¯”å¦‚ï¼šg_ks_suggest_callback
+ - class/id å‘½åï¼š ks-comp[-xxx]        æ¯”å¦‚ï¼šks-editor-toolbar-item
+ - data å±æ€§å‘½åï¼š  data-ks-comp[-xxx]   æ¯”å¦‚ï¼šdata-ks-suggest
+ - hook è§„èŒƒï¼š     KS_Comp              æ¯”å¦‚ï¼šKS_Switchable
 
-×¢Òâ£ºÎªÁË±ÜÃâÌ«Èß³¤£¬ÔÚ±£³ÖÇåÎúºÍÎŞÇ±ÔÚ³åÍ»µÄÇé¿öÏÂ£¬¿ÉÒÔ´òÆÆÔ­Ôò£¬±ÈÈç£º
+æ³¨æ„ï¼šä¸ºäº†é¿å…å¤ªå†—é•¿ï¼Œåœ¨ä¿æŒæ¸…æ™°å’Œæ— æ½œåœ¨å†²çªçš„æƒ…å†µä¸‹ï¼Œå¯ä»¥æ‰“ç ´åŸåˆ™ï¼Œæ¯”å¦‚ï¼š
     <div class="KS_Widget" data-widget-type="Tabs" data-widget-config="{...}">
 
 
 Questions?
 ----------
  - Docs: <http://docs.kissyui.com>
- - Bug£º<http://github.com/kissyteam/kissy/issues>
- - ÓÊ¼ş£º<kissyteam@gmail.com>
+ - Bugï¼š<http://github.com/kissyteam/kissy/issues>
+ - é‚®ä»¶ï¼š<kissyteam@gmail.com>
  - Twitter: <http://twitter.com/#!/kissyteam>
  * Blog: <http://kissyui.com/blog/>
