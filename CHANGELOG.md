@@ -15,5 +15,6 @@ Legend of version history:
 History:
 --------
 ### 历史记录
- - [+] 创建GIT目录结构，master为主干，gh-pages是系统分支(用于创建项目主页)
+ - [+] 创建GIT目录结构，master为主干，gh-pages是系统分支(用于创建项目主页)    <2011-7-14>
 
+ - [+] 创建tag标签v0.1    <2011-7-14>
