@@ -1,10 +1,8 @@
 ﻿暑假项目
 =======================================
+ - 项目主页: <http://icecreamliker.github.com/SummerProject/>
+ - 姚立个人主页: <http://about.me/yaoli>
 
- - Source: <http://github.com/kissyteam/kissy>
- - Docs: <http://kissyteam.github.com/>
- - Changelog: <http://github.com/kissyteam/kissy/blob/master/CHANGELOG.md>
- - License: <http://github.com/kissyteam/kissy/blob/master/LICENSE.md>
 
 
  Vision
@@ -18,10 +16,10 @@
 
  Structure
 -----------
- - build:         构建好的发布文件
- - docs:          API 文档
- - src:           源码、测试等开发资源
- - tools:         打包压缩等自动化工具
+ - demo:            静态demo页面
+ - project:         项目代码
+ - README.md:       项目相关说明
+ - CHANGELOG.md     历史修改记录
 
 
  Convention
@@ -39,8 +37,5 @@
 
 Questions?
 ----------
- - Docs: <http://docs.kissyui.com>
- - Bug：<http://github.com/kissyteam/kissy/issues>
- - 邮件：<kissyteam@gmail.com>
- - Twitter: <http://twitter.com/#!/kissyteam>
- * Blog: <http://kissyui.com/blog/>
+ - 邮件：<yaoli111144@gmail.com>
+
