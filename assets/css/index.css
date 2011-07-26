@@ -1,0 +1,142 @@
+﻿/*
+双飞翼栅格布局 Flying Swing Grids Layout
+理念：简单质朴，语义化布局。
+维护：玉伯<lifesinger@gmail.com>, 正淳<ragecarrier@gmail.com>
+*/
+
+/* 居中 */
+#header, #content, #footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/** 布局基础样式 **/
+.col-main {
+    float: left;
+    width: 100%;
+    /* bug fix: 主栏没有内容时，在 Firefox 和 Chrome 等浏览器下，布局不对 */
+    min-height: 1px;
+}
+.col-sub, .col-extra {
+    float: left;
+    /*position: relative;  按需设置，仅在需要时添加 */
+}
+
+/** 清除浮动 **/
+.layout:after, .main-wrap:after, .col-sub:after, .col-extra:after {
+	content: '\20';
+	display: block;
+	height: 0;
+	clear: both;
+}
+.layout, .main-wrap, .col-sub, .col-extra {
+    *zoom: 1;
+}
+
+/** 两栏布局 **/
+.grid-s5m0 .main-wrap { margin-left: 427px; }
+.grid-s5m0 .col-sub { width: 427px; margin-left: -100%; }
+
+
+a, a:hover {
+	text-decoration:none;
+}
+
+#BackgroundImg {
+	position:fixed;
+	z-index:-2;
+	left:0;
+	opacity:0.9999;
+}
+
+#Footer {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	height:30px;
+	width:100%;
+}
+
+#Name, #Category, #About, #Contact {
+	float:left;
+	position:relative;
+	height:30px; 
+	width:123px; 
+	margin-right:1px;
+}
+
+#Category, #About, #Contact {
+	width:100px;
+}
+#Copyright {
+	position:relative;
+	width:100%;
+	
+}
+
+#Name .bg,
+#Category .bg,
+#About .bg,
+#Contact .bg,
+#Copyright .bg {
+	height:30px;
+	width:100%;
+	background-color:#000;
+	opacity:0.6;
+}
+
+#Name .layer,
+#Category .layer,
+#About .layer,
+#Contact .layer {
+	position:absolute;
+	left:0px; 
+	top:0px;
+	height:26px;
+	width:100%;
+	padding-top:4px;
+	text-align:center;
+	color:#3399ff; 
+	font-size:14px;
+	letter-spacing:4px;
+	cursor:pointer;
+}
+
+#Category .layer,
+#About .layer,
+#Contact .layer {
+	font-family:'gill sans light';
+	font-size:14px;
+	color:#fff;
+	padding-top:5px;
+	height:25px;
+	letter-spacing:normal;
+	font-weight:normal;
+}
+
+#Copyright .layer {
+	float:right;
+	position:absolute;
+	width:100%;
+	left:0px; 
+	top:0px;
+	height:25px;
+	padding-top:5px;
+	font-family:'gill sans light';
+	font-size:12px;
+	color:#fff;
+}
+#Copyright .layer .copy {
+	 text-align:right;
+	 padding-right:10px;
+}
+
+#Name .layer a {
+	color:#3399ff; 
+}
+
+#Category .layer a,
+#About .layer a,
+#Contact .layer a {
+	color:#fff;
+} 
