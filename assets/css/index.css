@@ -59,102 +59,76 @@ a, a:hover {
 
 #Name, #Category, #About, #Contact {
 	float:left;
-	position:relative;
-	height:30px; 
+	background:url(../img/bg1.png) repeat 0 0;
+	height:25px;
 	width:123px; 
+	padding-top:5px;
 	margin-right:1px;
+	color:#3399FF;
+	font-size: 14px;
+	letter-spacing: 4px;
+	text-align:center;
+	cursor: pointer;
 }
 
 #Category, #About, #Contact {
+	font-family: 'gill sans light';
 	width:100px;
+	letter-spacing: normal;
+	color:#fff;
 }
 #Copyright {
-	position:relative;
+	background:url(../img/bg1.png) repeat 0 0;
 	width:100%;
-	
-}
-
-#Name .bg,
-#Category .bg,
-#About .bg,
-#Contact .bg,
-#Copyright .bg {
-	height:30px;
-	width:100%;
-	background-color:#000;
-	opacity:0.6;
-}
-
-#Name .layer,
-#Category .layer,
-#About .layer,
-#Contact .layer {
-	position:absolute;
-	left:0px; 
-	top:0px;
-	height:26px;
-	width:100%;
-	padding-top:4px;
-	text-align:center;
-	color:#3399ff; 
-	font-size:14px;
-	letter-spacing:4px;
-	cursor:pointer;
-}
-
-#Category .layer,
-#About .layer,
-#Contact .layer {
-	font-family:'gill sans light';
-	font-size:14px;
 	color:#fff;
-	padding-top:0px;
-	height:30px;
-	letter-spacing:normal;
-	font-weight:normal;
+	font-family: 'gill sans light';
+	font-size: 12px;
+	height: 25px;
+	padding-top: 5px;
 }
 
-#Copyright .layer {
-	float:right;
+#Copyright .copy {
+	text-align:right;
+	margin-right:10px;
+}
+#J_Pop {
 	position:absolute;
-	width:100%;
-	left:0px; 
-	top:0px;
-	height:25px;
-	padding-top:5px;
-	font-family:'gill sans light';
-	font-size:12px;
-	color:#fff;
-}
-#Copyright .layer .copy {
-	 text-align:right;
-	 padding-right:10px;
-}
-
-#Name .layer a {
-	color:#3399ff; 
-}
-
-#Category .layer a,
-#About .layer a,
-#Contact .layer a {
-	width:100px;
-	height:25px;
-	padding-top:5px;
-	display:block;
-	color:#fff;
-} 
-
-#J_Pop, #J_Pop_About, #J_Pop_Contact {
-	position:absolute;
+	background:url(../img/bg1.png) repeat 0 0;
 	left:0;
 	top:0;
 }
 
 #J_Pop_About, #J_Pop_Contact {
+	position:absolute;
+	left:0;
+	top:0;
+	opacity:0;
 	color:#fff;
 }
 
+#J_Pop_Close {
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:35px;
+	height:35px;
+}
+
+#J_Pop_Close a {
+	display:block;
+	width:35px;
+	height:35px;
+	background:url(../img/close_btn.png) repeat 0 0;
+	cursor:pointer;
+}
+
+#J_Pop_Close  a:hover {
+	background:url(../img/close_btn_on.png) repeat 0 0;
+}
+
+#Footer .highlight {
+	background:url(../img/bg2.png) repeat 0 0;
+}
 
 #Mask #left_btn {
 	display:block;
