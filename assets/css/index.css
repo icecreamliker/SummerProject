@@ -62,24 +62,61 @@ a, a:hover {
 
 #Name, #Category, #About, #Contact {
 	float:left;
-	background:url(../img/bg1.png) repeat 0 0;
-	height:25px;
+	height:30px;
 	width:123px; 
-	padding-top:5px;
 	margin-right:1px;
-	color:#3399FF;
-	font-size: 14px;
-	letter-spacing: 4px;
-	text-align:center;
-	cursor: pointer;
 }
 
-#Category, #About, #Contact {
-	font-family: 'gill sans light';
-	width:100px;
-	letter-spacing: normal;
-	color:#fff;
+#Name {
+	background:url(../img/bg1.png) repeat 0 0;
+	height:25px;
+	padding-top:5px;
+	font-size:14px;
+	color:#3399ff;
+	text-align:center;
+	letter-spacing:4px;
 }
+
+#Category, #About, #Contact{
+	width:100px;
+}
+
+#Category a {
+	display:block;
+	width:100px;
+	height:30px;
+	background:url(../img/category.png) no-repeat 0 0;
+	cursor:pointer;
+}
+
+#Category a:hover {
+	background:url(../img/category_on.png) no-repeat 0 0;
+}
+
+#Contact a {
+	display:block;
+	width:100px;
+	height:30px;
+	background:url(../img/contact.png) no-repeat 0 0;
+	cursor:pointer;
+}
+
+#Contact a:hover {
+	background:url(../img/contact_on.png) no-repeat 0 0;
+}
+
+#About a {
+	display:block;
+	width:100px;
+	height:30px;
+	background:url(../img/about.png) no-repeat 0 0;
+	cursor:pointer;
+}
+
+#About a:hover {
+	background:url(../img/about_on.png) no-repeat 0 0;
+}
+
 #Copyright {
 	background:url(../img/bg1.png) repeat 0 0;
 	width:100%;
@@ -105,8 +142,9 @@ a, a:hover {
 	position:absolute;
 	left:0;
 	top:0;
-	opacity:0;
 	color:#fff;
+	opacity:0;
+	filter:alpha(opacity=0);
 }
 
 #J_Pop_Close {
@@ -129,8 +167,16 @@ a, a:hover {
 	background:url(../img/close_btn_on.png) repeat 0 0;
 }
 
-#Footer .highlight {
-	background:url(../img/bg2.png) repeat 0 0;
+#Category.highlight {
+	background:url(../img/category_on.png) repeat 0 0;
+}
+
+#About.highlight {
+	background:url(../img/about_on.png) repeat 0 0;
+}
+
+#Contact.highlight {
+	background:url(../img/contact_on.png) repeat 0 0;
 }
 
 #left_btn {
@@ -173,4 +219,24 @@ a, a:hover {
 
  #right_btn  a:hover {
 	background:url(../img/big_arrow_on_right.png) no-repeat 0 0;
+}
+
+#CategoryMenu {
+	position:absolute;
+	bottom:31px;
+	left:123px;
+	background:url(../img/bg3.png) repeat 0 0;
+	width:150px;
+	padding:5px 0;
+}
+
+#CategoryMenu ul li {
+	height:27px;
+	padding-top:5px;
+	width:150px;
+	font-family: 'Open Sans', sans-serif;
+	color:#fff;
+	font-size:16px;
+	text-align:center;
+	cursor:pointer;
 }

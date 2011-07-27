@@ -14,7 +14,7 @@ $(document).ready(function() {
 	$('#BackgroundImg').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
 	$('#Mask').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
 	$('#J_Pop').height(clientHeight-MENU-1);
-	$('#J_Pop').width(clientWidth/2);
+	$('#J_Pop').width(clientWidth * 0.4);
 	$('#Thumbnail').draggable({ containment: [0, 0, clientWidth-162, clientHeight-OFFVERTICAL] });
 	
 	/**
