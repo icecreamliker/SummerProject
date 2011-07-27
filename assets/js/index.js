@@ -32,21 +32,21 @@ $(document).ready(function() {
 			IsAbout = true;
 			$('#About').addClass('highlight');
 			$('#J_Pop').toggle( 'slide', {direction:'up'}, 500,function(){
-				$('#J_Pop_About').fadeTo(800, 1);	
+				$('#J_Pop_About').fadeTo(500, 1);	
 			});
 		}else if(!IsAbout && IsContact){//进入about和contact的切换流程
 			IsAbout = true;
 			IsContact = false;
 			$('#About').addClass('highlight');
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(800, 0 ,function(){
-				$('#J_Pop_About').fadeTo(800, 1);
+			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
+				$('#J_Pop_About').fadeTo(500, 1);
 			});
 			
 		}else{
 			IsAbout = false;
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(800, 0 ,function(){
+			$('#J_Pop_About').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
 			});
 		}
@@ -60,20 +60,20 @@ $(document).ready(function() {
 			IsContact = true;
 			$('#Contact').addClass('highlight');
 			$('#J_Pop').toggle( 'slide', {direction:'up'}, 500,function(){
-				$('#J_Pop_Contact').fadeTo(800, 1);	
+				$('#J_Pop_Contact').fadeTo(500, 1);	
 			});
 		}else if(!IsContact && IsAbout){//进入contact和about的切换流程
 			IsContact = true;
 			IsAbout = false;
 			$('#Contact').addClass('highlight');
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(800, 0 ,function(){
-				$('#J_Pop_Contact').fadeTo(800, 1);
+			$('#J_Pop_About').fadeTo(500, 0 ,function(){
+				$('#J_Pop_Contact').fadeTo(500, 1);
 			});
 		}else{
 			IsContact = false;
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(800, 0 ,function(){
+			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
 			});
 		}
@@ -87,13 +87,13 @@ $(document).ready(function() {
 		ev.preventDefault();
 		if(IsAbout){
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(800, 0 ,function(){
+			$('#J_Pop_About').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
 			});
 		}
 		if(IsContact){
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(800, 0 ,function(){
+			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
 			});
 		}

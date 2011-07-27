@@ -46,7 +46,10 @@ a, a:hover {
 	position:fixed;
 	z-index:-2;
 	left:0;
-	opacity:0.9999;
+	top:0;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Footer {
@@ -130,19 +133,44 @@ a, a:hover {
 	background:url(../img/bg2.png) repeat 0 0;
 }
 
-#Mask #left_btn {
+#left_btn {
 	display:block;
 	position:fixed;
 	width:30px;
 	height:70px;
 	top:45%;
 	left:20px;
-	background:url(../img/big_arrow_left.png) no-repeat 0 0;
 }
 
-#Mask #right_btn {
+ #left_btn a{
+	display:block;
+	width:30px;
+	height:70px;
+	background:url(../img/big_arrow_left.png) no-repeat 0 0;
+	cursor:pointer;
+}
+
+#left_btn a:hover {
+	background:url(../img/big_arrow_on_left.png) no-repeat 0 0;
+}
+
+ #right_btn {
 	display:block;
 	position:fixed;
-	top:50%;
+	width:30px;
+	height:70px;
+	top:45%;
 	right:20px;
+}
+
+ #right_btn  a{
+	display:block;
+	width:30px;
+	height:70px;
+	background:url(../img/big_arrow_right.png) no-repeat 0 0;
+	cursor:pointer;
+}
+
+ #right_btn  a:hover {
+	background:url(../img/big_arrow_on_right.png) no-repeat 0 0;
 }
