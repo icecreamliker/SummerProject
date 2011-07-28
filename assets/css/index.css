@@ -243,6 +243,7 @@ a, a:hover {
 	top:5px;
 	left: 8px;
 	cursor:pointer;
+	z-index:45;
 }
 
 #Thumbnail {
@@ -279,6 +280,9 @@ a, a:hover {
 	margin-left:2px;
 	width:40px;
 	height:40px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Thumbnail #Thumbnail_Left  {
