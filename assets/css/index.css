@@ -255,12 +255,16 @@ a, a:hover {
 	 cursor:move;
 }
 
-#Thumbnail  ul {
-	margin-top:5px;
+#Thumbnail  #Thumbnail_Wrapper {
+	overflow:hidden;
 	float:left;
 	width:360px;
 	height:40px;
-	overflow:hidden;
+	margin-top:5px;
+}
+
+#Thumbnail  ul {
+	height:40px;
 }
 
 #Thumbnail  ul li {

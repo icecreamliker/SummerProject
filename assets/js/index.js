@@ -125,12 +125,23 @@ $(document).ready(function() {
 	/**
 	 * 给category的menu做滑动效果
 	 **/
-	 $('#CategoryMenu > ul > li').mouseenter(function(){
+	$('#CategoryMenu > ul > li').mouseenter(function(){
 		var current_top = CATEGORY_LEN[$(this).prevAll().length];
 		$('#J_Big_Hover').clearQueue();
 		$('#J_Big_Hover').animate({top: current_top}, 800,function(){
 			
 		});
-	 });
+	});
+	 
+	/**
+	 * 给小图做滑动效果
+	**/
+	 //首先要计算所有的图片的宽度,并且初始化thumbnail相关信息
+	var my_len = 0;
+	$('#Tumbnail_Con > li').each(function(index) {
+		my_len += $(this).outerWidth(true);
+	});
+	$('#Tumbnail_Con').css('width', my_len);
+	$('#Thumbnail_Wrapper').scrollLeft(45);
 
 });
