@@ -1,15 +1,19 @@
 $(document).ready(function() {
+
 	/**
 	 * 获取屏幕的实际宽度和高度
 	 **/
 	var clientHeight = $(document).height();
 	var clientWidth = $(document).width();
+	
 	/**
 	 * 162px为缩略图的宽度，72px为缩略图的高度和menu高度之和，30px为menu的高度
 	 **/
-	var OFFVERTICAL = 72, OFFHORIZONTAL = 162, MENU = 30, IsAbout = false, IsContact = false;
+	var OFFVERTICAL = 72, OFFHORIZONTAL = 162, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false;
+	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
+	
 	/**
-	 * 初始化相关页面节点属性（如高度宽度等。。。）
+	 * 初始化相关页面节点属性（如高度\宽度\分类\图片信息等。。。）
 	 **/
 	$('#BackgroundImg').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
 	$('#Mask').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
@@ -20,9 +24,18 @@ $(document).ready(function() {
 	/**
 	 * 给Category添加监听事件
 	 **/
-//	$('#Category').mouseenter(function() {
-//		alert(1);
-//	});
+	$('#Category').click(function(ev) {
+		ev.preventDefault();
+		if(!IsCategory){
+			IsCategory = true;
+			$(this).addClass('highlight');
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+		}else{
+			IsCategory =false;
+			$(this).removeClass('highlight');
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+		}
+	});
 	
 	/**
 	 * 给About添加监听事件
@@ -102,7 +115,5 @@ $(document).ready(function() {
 		
 	});
 	
-	/**
-	 * about和contact显示功能
-	 **/
+
 });

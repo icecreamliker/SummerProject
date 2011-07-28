@@ -234,3 +234,12 @@ a, a:hover {
 	text-align:center;
 	cursor:pointer;
 }
+
+#J_Big_Hover {
+	position:absolute;
+	background:url('../img/icon1.png') no-repeat 0 -202px;
+	width:134px;
+	height:32px;
+	top:5px;
+	left: 8px;
+}
