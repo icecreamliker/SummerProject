@@ -68,13 +68,7 @@ a, a:hover {
 }
 
 #Name {
-	background:url(../img/bg1.png) repeat 0 0;
-	height:25px;
-	padding-top:5px;
-	font-size:14px;
-	color:#3399ff;
-	text-align:center;
-	letter-spacing:4px;
+	background:url(../img/icon1.png) no-repeat -313px 0;
 }
 
 #Category, #About, #Contact{
@@ -85,43 +79,43 @@ a, a:hover {
 	display:block;
 	width:100px;
 	height:30px;
-	background:url(../img/category.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat 0 0;
 	cursor:pointer;
 }
 
 #Category a:hover {
-	background:url(../img/category_on.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat 0 -32px;
 }
 
 #Contact a {
 	display:block;
 	width:100px;
 	height:30px;
-	background:url(../img/contact.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -208px 0;
 	cursor:pointer;
 }
 
 #Contact a:hover {
-	background:url(../img/contact_on.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -208px -32px;
 }
 
 #About a {
 	display:block;
 	width:100px;
 	height:30px;
-	background:url(../img/about.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -103px 0;
 	cursor:pointer;
 }
 
 #About a:hover {
-	background:url(../img/about_on.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -103px -32px;
 }
 
 #Copyright {
 	background:url(../img/bg1.png) repeat 0 0;
 	width:100%;
 	color:#fff;
-	font-family: 'gill sans light';
+	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
 	height: 25px;
 	padding-top: 5px;
@@ -159,24 +153,24 @@ a, a:hover {
 	display:block;
 	width:35px;
 	height:35px;
-	background:url(../img/close_btn.png) repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -146px -66px;
 	cursor:pointer;
 }
 
 #J_Pop_Close  a:hover {
-	background:url(../img/close_btn_on.png) repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -196px -66px;
 }
 
 #Category.highlight {
-	background:url(../img/category_on.png) repeat 0 0;
+	background:url(../img/icon1.png) no-repeat 0 -32px;
 }
 
 #About.highlight {
-	background:url(../img/about_on.png) repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -103px -32px;
 }
 
 #Contact.highlight {
-	background:url(../img/contact_on.png) repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -208px -32px;
 }
 
 #left_btn {
@@ -192,12 +186,12 @@ a, a:hover {
 	display:block;
 	width:30px;
 	height:70px;
-	background:url(../img/big_arrow_left.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat 0 -66px;
 	cursor:pointer;
 }
 
 #left_btn a:hover {
-	background:url(../img/big_arrow_on_left.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -33px -66px;
 }
 
  #right_btn {
@@ -213,18 +207,18 @@ a, a:hover {
 	display:block;
 	width:30px;
 	height:70px;
-	background:url(../img/big_arrow_right.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -68px -66px;
 	cursor:pointer;
 }
 
  #right_btn  a:hover {
-	background:url(../img/big_arrow_on_right.png) no-repeat 0 0;
+	background:url(../img/icon1.png) no-repeat -103px -66px;
 }
 
 #CategoryMenu {
 	position:absolute;
 	bottom:31px;
-	left:123px;
+	left:124px;
 	background:url(../img/bg3.png) repeat 0 0;
 	width:150px;
 	padding:5px 0;
