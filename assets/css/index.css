@@ -53,7 +53,7 @@ a, a:hover {
 }
 
 #Footer {
-	position:absolute;
+	position:fixed;
 	left:0px;
 	bottom:0px;
 	height:30px;
@@ -242,6 +242,7 @@ a, a:hover {
 	height:32px;
 	top:5px;
 	left: 8px;
+	cursor:pointer;
 }
 
 #Thumbnail {
@@ -257,29 +258,28 @@ a, a:hover {
 #Thumbnail  ul {
 	margin-top:5px;
 	float:left;
+	width:360px;
+	height:40px;
+	overflow:hidden;
 }
 
 #Thumbnail  ul li {
 	float:left;
-	width:40px;
+	width:45px;
 	height:40px;
-	margin-right:5px;
 	cursor:pointer;
 }
 
-#Thumbnail  ul li.last {
-	margin-right:0px;
-}
 
 #Thumbnail  ul li img {
+	margin-left:2px;
 	width:40px;
 	height:40px;
 }
 
 #Thumbnail #Thumbnail_Left  {
 	float:left;
-	margin:0 4px;
-	margin-top:15px;
+	margin: 15px 3px 0 2px;
 	width:10px;
 	height:20px;
 }
@@ -297,7 +297,7 @@ a, a:hover {
 
 #Thumbnail #Thumbnail_Right  {
 	float:left;
-	margin-left:4px;
+	margin-left:3px;
 	margin-top:15px;
 	width:10px;
 	height:20px;
@@ -318,9 +318,8 @@ a, a:hover {
 	background:url(../img/icon1.png) no-repeat -254px -74px;
 	position:absolute;
 	top:2px;
-	left:15px;
+	left:329px;
 	width:46px;
 	height:46px;
-	width:
 }
 

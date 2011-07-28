@@ -11,14 +11,13 @@ $(document).ready(function() {
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false;
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
-	var SMALL_PICS = [15, 60, 105, 150, 195, 240, 285, 330];
+	var SMALL_PICS = [14, 59, 104, 149, 194, 239, 284, 329];
 	/**
 	 * 初始化相关页面节点属性（如高度\宽度\分类\图片信息等。。。）
 	 **/
 	$('#BackgroundImg').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
 	$('#Mask').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
 	$('#J_Pop').height(clientHeight-MENU-1);
-	$('#J_Pop').width(clientWidth * 0.4);
 	$('#Thumbnail').draggable({ containment: [0, 0, clientWidth-OFFHORIZONTAL, clientHeight-OFFVERTICAL] });
 	//添加category的menu dom节点 && 计算每一个hover的高度
 	var CATEGORY_LEN = new Array();
@@ -123,5 +122,15 @@ $(document).ready(function() {
 		
 	});
 	
+	/**
+	 * 给category的menu做滑动效果
+	 **/
+	 $('#CategoryMenu > ul > li').mouseenter(function(){
+		var current_top = CATEGORY_LEN[$(this).prevAll().length];
+		$('#J_Big_Hover').clearQueue();
+		$('#J_Big_Hover').animate({top: current_top}, 800,function(){
+			
+		});
+	 });
 
 });
