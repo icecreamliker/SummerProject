@@ -243,3 +243,84 @@ a, a:hover {
 	top:5px;
 	left: 8px;
 }
+
+#Thumbnail {
+	 position:absolute; 
+	 background:url(../img/icon1.png) no-repeat 0 -145px;
+	 top:130px;
+	 right:50px;
+	 width:390px; 
+	 height:50px;
+	 cursor:move;
+}
+
+#Thumbnail  ul {
+	margin-top:5px;
+	float:left;
+}
+
+#Thumbnail  ul li {
+	float:left;
+	width:40px;
+	height:40px;
+	margin-right:5px;
+	cursor:pointer;
+}
+
+#Thumbnail  ul li.last {
+	margin-right:0px;
+}
+
+#Thumbnail  ul li img {
+	width:40px;
+	height:40px;
+}
+
+#Thumbnail #Thumbnail_Left  {
+	float:left;
+	margin:0 4px;
+	margin-top:15px;
+	width:10px;
+	height:20px;
+}
+#Thumbnail #Thumbnail_Left  a {
+	display:block;
+	background:url(../img/icon1.png) no-repeat -323px -86px;
+	width:10px;
+	height:20px;
+	cursor:pointer;
+}
+
+#Thumbnail #Thumbnail_Left  a:hover {
+	background:url(../img/icon1.png) no-repeat -340px -86px;
+}
+
+#Thumbnail #Thumbnail_Right  {
+	float:left;
+	margin-left:4px;
+	margin-top:15px;
+	width:10px;
+	height:20px;
+}
+#Thumbnail #Thumbnail_Right  a {
+	display:block;
+	background:url(../img/icon1.png) no-repeat -358px -86px;
+	width:10px;
+	height:20px;
+	cursor:pointer;
+}
+
+#Thumbnail #Thumbnail_Right  a:hover {
+	background:url(../img/icon1.png) no-repeat -375px -86px;
+}
+
+#Thumbnail #J_Small_Hover {
+	background:url(../img/icon1.png) no-repeat -254px -74px;
+	position:absolute;
+	top:2px;
+	left:15px;
+	width:46px;
+	height:46px;
+	width:
+}
+
