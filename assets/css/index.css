@@ -42,15 +42,27 @@ a, a:hover {
 	text-decoration:none;
 }
 
-#BackgroundImg {
-	position:fixed;
-	z-index:-2;
-	left:0;
-	top:0;
+#Bg_Wrapper {
+	overflow:hidden;
+}
+
+#Bg {
+	line-height:0px;
+	font-size:0px;
+}
+
+#Bg li {
+	float:left;
+	line-height:0px;
+	font-size:0px;
+}
+
+#Bg img {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
 }
+
 
 #Footer {
 	position:fixed;
@@ -396,12 +408,22 @@ a, a:hover {
 	 cursor:move;
 }
 
-#Thumbnail  #Thumbnail_Wrapper {
-	overflow:hidden;
+#Thumbnail #Thumbnail_Center {
+	position:relative;
 	float:left;
+	margin:0px;
+	height:50px;
+	width:361px;
+	overflow:hidden;
+}
+
+#Thumbnail  #Thumbnail_Wrapper {
+	position:relative;
+	overflow:hidden;
 	width:360px;
 	height:40px;
 	margin-top:5px;
+	margin-left:1px;
 }
 
 #Thumbnail  ul {
@@ -427,7 +449,7 @@ a, a:hover {
 
 #Thumbnail #Thumbnail_Left  {
 	float:left;
-	margin: 15px 3px 0 2px;
+	margin: 15px 2px 0 2px;
 	width:10px;
 	height:20px;
 }
@@ -466,8 +488,9 @@ a, a:hover {
 	background:url(../img/icon1.png) no-repeat -254px -74px;
 	position:absolute;
 	top:2px;
-	left:329px;
+	left:0px;
 	width:46px;
 	height:46px;
+	z-index:99;
 }
 

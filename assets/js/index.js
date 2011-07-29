@@ -2,24 +2,53 @@ $(document).ready(function() {
 
 	/**
 	 * 获取屏幕的实际宽度和高度
+	 
+	var viewportwidth;
+	var viewportheight;
+	 
+	 // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+	 
+	 if (typeof window.innerWidth != 'undefined')
+	 {
+		  viewportwidth = window.innerWidth,
+		  viewportheight = window.innerHeight
+	 }
+	 
+	// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+
+	 else if (typeof document.documentElement != 'undefined'
+		 && typeof document.documentElement.clientWidth !=
+		 'undefined' && document.documentElement.clientWidth != 0)
+	 {
+		   viewportwidth = document.documentElement.clientWidth,
+		   viewportheight = document.documentElement.clientHeight
+	 }
 	 **/
-	var clientHeight = $(document).height();
-	var clientWidth = $(document).width();
-	
+	var viewportwidth = $(window).width();
+	var viewportheight = $(window).height();
+	 
 	/**
 	 * 390px为缩略图的宽度，80px为缩略图的高度和menu高度之和，30px为menu的高度
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false;
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
+	var CATEGORY_PIC = [{category:0, url:'assets/img/bg22.png'},{category:1, url:'assets/img/bg3.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
-	var SMALL_PICS = [14, 59, 104, 149, 194, 239, 284, 329];
+	var THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
+	var THUMBNAIL_OFF = 0;//缩略图向右偏移的个数
+	var THUMBNAIL_NUM = 0;//缩略图的个数
+	var SMALL_PICS = [0, 45, 90, 135, 180, 225, 270, 315];
+	
+	var my_len = 0;//缩略图的总宽度
+	var big_len = 0;//背景图的总宽度
+	var cur_len = 1600;//当前背景图的总宽度
 	/**
 	 * 初始化相关页面节点属性（如高度\宽度\分类\图片信息等。。。）
 	 **/
-	$('#BackgroundImg').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
-	$('#Mask').attr('style','width:' + clientWidth + 'px;height:' + clientHeight + 'px;');
-	$('#J_Pop').height(clientHeight-MENU-1);
-	$('#Thumbnail').draggable({ containment: [0, 0, clientWidth-OFFHORIZONTAL, clientHeight-OFFVERTICAL], cancel:'.move_cancle' });
+	$('#Bg_Wrapper').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
+	$('#Mask').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
+	$('#J_Pop').height(viewportheight-MENU-1);
+	$('#Thumbnail').draggable({ containment: [0, 0, viewportwidth-OFFHORIZONTAL, viewportheight-OFFVERTICAL], cancel:'.move_cancle' });
 	//添加category的menu dom节点 && 计算每一个hover的高度
 	var CATEGORY_LEN = new Array();
 	for(var loop = 0, len = CATEGORY.length; loop < len; loop++){
@@ -27,6 +56,8 @@ $(document).ready(function() {
 		CATEGORY_LEN.push(5+32*loop);
 	}
 	$('#J_Big_Hover').css('top',CATEGORY_LEN[0]);
+	
+	THUMBNAIL_NUM = $('#Tumbnail_Con >li').length;
 	/**
 	 * 给Category添加监听事件
 	 **/
@@ -164,24 +195,90 @@ $(document).ready(function() {
 	});
 	 
 	/**
-	 * 给小图做滑动效果
+	 * 给小图做滑动效果和大图标滑动效果
 	**/
 	 //首先要计算所有的图片的宽度,并且初始化thumbnail相关信息
-	var my_len = 0;
+
 	$('#Tumbnail_Con > li').each(function(index) {
 		my_len += $(this).outerWidth(true);
 	});
+	
 	$('#Tumbnail_Con').css('width', my_len);
-	//$('#Thumbnail_Wrapper').scrollLeft(45);
-	$('#Thumbnail_Right').click(function(){
+	
+	//计算背景总宽度
+	function CalculateBg(){
+		big_len = 0;
+		$('#Bg > li').each(function(index) {
+			big_len += $(this).outerWidth(true);
+		});
+		$('#Bg').css('width', big_len);
+	}
+
+	$('#Thumbnail_Right').click(function(ev){
+		ev.preventDefault();
+		var flag = false;
+		if(THUMBNAIL_OFF < (THUMBNAIL_NUM-8)){
+				++THUMBNAIL_OFF;
+				flag = true;
+		}
 		$('#Thumbnail_Wrapper').animate({'scrollLeft': '+=45'}, 400, function(){
-		
+			//preload(CATEGORY_PIC[0].url);
+			//$('#Bg_Wrapper').animate({'scrollLeft': '+='+cur_len}, 1000, function(){});	
 		});
+		if(flag){
+			$('#J_Small_Hover').animate({'left': '-=45'}, 500,function(){});
+		}
 	});
-	$('#Thumbnail_Left').click(function(){
+	$('#Thumbnail_Left').click(function(ev){
+		ev.preventDefault();
+		var flag = false;
+		if(THUMBNAIL_OFF > 0){
+				--THUMBNAIL_OFF;
+				flag = true;
+		}
 		$('#Thumbnail_Wrapper').animate({'scrollLeft': '-=45'}, 400, function(){
-			$('#BackgroundImg').toggle('slide', {direction:'right'}, 700);
+			//$('#Bg_Wrapper').animate({'scrollLeft': '-='+cur_len}, 1000, function(){});	
 		});
+		if(flag){
+			$('#J_Small_Hover').animate({'left': '+=45'}, 500,function(){});
+		}
 	});
+	
+	//缩略图高亮移动
+	function tumbnail_move(){
+		$('#Tumbnail_Con > li').mouseenter(function(){
+			var list = $(this).prevAll().length;
+			list = list * 45;
+			list = list - $('#Thumbnail_Wrapper').scrollLeft();
+			$('#J_Small_Hover').clearQueue();
+			$('#J_Small_Hover').animate({left: list}, 500,function(){});
+		});
+		$('#Tumbnail_Con > li').click(function(){
+			THUMBNAIL_INDEX = $(this).prevAll().length;
+			//alert(THUMBNAIL_INDEX);
+		});
+		$('#Tumbnail_Con > li').mouseleave(function(){
+			$('#J_Small_Hover').clearQueue();
+			$('#J_Small_Hover').animate({left: (THUMBNAIL_INDEX-THUMBNAIL_OFF)*45}, 500,function(){});
+		});
+	}
+	
+	//图片下载功能
+	function preload(path){
+		var w = 0;
+		$('#Loader').css('display','block');
+		var loader = new Image();
+		loader.onload = loadTarget;
+		loader.src = path;
+		function loadTarget(){
+			cur_len = loader.width;
+			$('#Bg').append("<li><img src='"+path+"' /></li>");
+			$('#Bg').css('width', CalculateBg());
+			$('#Loader').css('display','none');
+		}
+	}
+	
+	//初始化动作
+	tumbnail_move();
 
 });
