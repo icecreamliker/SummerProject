@@ -62,14 +62,18 @@ $(document).ready(function() {
 			$('#Contact').removeClass('highlight');
 			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
 				$('#J_Pop_About').fadeTo(500, 1);
+				$(this).css('display','none');
 			});
+			
 			
 		}else{
 			IsAbout = false;
 			$('#About').removeClass('highlight');
 			$('#J_Pop_About').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+				$(this).css('display','none');
 			});
+			
 		}
 	});
 	
@@ -91,12 +95,14 @@ $(document).ready(function() {
 			$('#About').removeClass('highlight');
 			$('#J_Pop_About').fadeTo(500, 0 ,function(){
 				$('#J_Pop_Contact').fadeTo(500, 1);
+				$(this).css('display','none');
 			});
 		}else{
 			IsContact = false;
 			$('#Contact').removeClass('highlight');
 			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+				$(this).css('display','none');
 			});
 		}
 		
@@ -111,12 +117,14 @@ $(document).ready(function() {
 			$('#About').removeClass('highlight');
 			$('#J_Pop_About').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+				$(this).css('display','none');
 			});
 		}
 		if(IsContact){
 			$('#Contact').removeClass('highlight');
 			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
 				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+				$(this).css('display','none');
 			});
 		}
 		IsAbout = false;
@@ -172,7 +180,7 @@ $(document).ready(function() {
 	});
 	$('#Thumbnail_Left').click(function(){
 		$('#Thumbnail_Wrapper').animate({'scrollLeft': '-=45'}, 400, function(){
-		
+			$('#BackgroundImg').toggle('slide', {direction:'right'}, 700);
 		});
 	});
 

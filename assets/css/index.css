@@ -133,12 +133,152 @@ a, a:hover {
 }
 
 #J_Pop_About, #J_Pop_Contact {
+	display:none;
 	position:absolute;
 	left:0;
 	top:0;
+	padding-left:40px;
+	font-size:15px;
+	font-family: 'Open Sans', sans-serif;
 	color:#fff;
 	opacity:0;
 	filter:alpha(opacity=0);
+}
+
+#J_Pop_Contact .title {
+	margin-top:150px;
+	font-size:25px;
+	font-weight:400;
+}
+
+#J_Pop_Contact .name {
+	margin-top:33px;
+	font-size:18px;
+}
+
+#J_Pop_Contact .tele .logo {
+	background:url(../img/icon2.png) no-repeat -271px -64px;
+	width:25px;
+	height:26px;
+	margin-top:15px;
+}
+
+#J_Pop_Contact .tele .tele1 {
+	margin-top:15px;
+}
+
+#J_Pop_Contact .email .logo {
+	background:url(../img/icon2.png) no-repeat -315px -64px;
+	width:25px;
+	height:18px;
+	margin-top:30px;
+}
+
+#J_Pop_Contact .email .email1 {
+	margin-top:15px;
+}
+
+#J_Pop_Contact .desc {
+	margin-top:16px;
+	width:530px;
+	letter-spacing:0px;
+}
+
+#J_Pop_Contact .ways {
+	height:57px;
+	width:660px;
+}
+
+#J_Pop_Contact .ways .fleft {
+	float:left;
+	margin-right:40px;
+}
+
+#J_Pop_Contact .ways .flickr {
+	width:85px;
+	height:26px;
+	margin-top:60px;
+}
+
+#J_Pop_Contact .ways .flickr a {
+	display:block;
+	background:url(../img/icon2.png) no-repeat -114px 0;
+	width:85px;
+	height:26px;
+}
+#J_Pop_Contact .ways .flickr a:hover {
+	background:url(../img/icon2.png) no-repeat -114px -31px;
+}
+
+#J_Pop_Contact .ways .facebook {
+	width:100px;
+	height:23px;
+	margin-top:62px;
+}
+
+#J_Pop_Contact .ways .facebook a {
+	display:block;
+	background:url(../img/icon2.png) no-repeat 0 0;
+	width:100px;
+	height:23px;
+}
+#J_Pop_Contact .ways .facebook a:hover {
+	background:url(../img/icon2.png) no-repeat 0 -31px;
+}
+
+#J_Pop_Contact .ways .moko {
+	width:60px;
+	height:57pxpx;
+	margin-top:28px;
+}
+
+#J_Pop_Contact .ways .moko a {
+	display:block;
+	background:url(../img/icon2.png) no-repeat -216px 0;
+	width:60px;
+	height:57px;
+}
+#J_Pop_Contact .ways .moko a:hover {
+	background:url(../img/icon2.png) no-repeat -283px 0px;
+}
+#J_Pop_Contact .ways .weibo {
+	width:120px;
+	height:37pxpx;
+	margin-top:48px;
+}
+
+#J_Pop_Contact .ways .weibo a {
+	display:block;
+	background:url(../img/icon2.png) no-repeat 0 -64px;
+	width:120px;
+	height:37px;
+}
+
+#J_Pop_Contact .ways .weibo a:hover {
+	background:url(../img/icon2.png) no-repeat -130px -64px;
+}
+
+#J_Pop_About .title {
+	margin-top:25px;
+}
+
+#J_Pop_About .title span {
+	font-size:25px;
+	font-weight:400;
+	padding-right:34px;
+}
+
+#J_Pop_About .desc {
+	margin-top:18px;
+	width:530px;
+}
+#J_Pop_About .desc a {
+	color:#fff;
+	text-decoration:underline;
+}
+
+#J_Pop_About .desc a:hover {
+	color:#3399ff;
 }
 
 #J_Pop_Close {
