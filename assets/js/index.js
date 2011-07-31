@@ -51,30 +51,32 @@ $(document).ready(function() {
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false;
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
-	var CATEGORY_PIC = [{category:0, small:'', url:'assets/img/big1.jpg'},{category:0, small:'', url:'assets/img/big2.jpg'},{category:0, small:'', url:'assets/img/big3.jpg'},{category:0, small:'', url:'assets/img/big4.jpg'},{category:0, small:'', url:'assets/img/big5.jpg'},{category:0, small:'', url:'assets/img/big6.jpg'},{category:0, small:'', url:'assets/img/big7.jpg'},{category:0, small:'', url:'assets/img/big8.jpg'},{category:0, small:'', url:'assets/img/big9.jpg'},{category:0, small:'', url:'assets/img/big10.jpg'},{category:0, small:'', url:'assets/img/big11.jpg'}];
+	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
 	var THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
 	var THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
 	var THUMBNAIL_OFF = 0;//缩略图向右偏移的个数
 	var THUMBNAIL_NUM = 0;//缩略图的个数
 	var THUMBNAIL_PATH = new Array();//当前缩略图存储的所有路径
+	var THUMBNAIL_SMAILL_PATH = new Array();//当前缩略图存储的小图的所有路径
 	//var SMALL_PICS = [0, 45, 90, 135, 180, 225, 270, 315];
 	var CATEGORY_INDEX = 0;//当前是第几个分类
 	for(var i = 0, cate_len = CATEGORY_PIC.length; i < cate_len; i++){
 		if(CATEGORY_PIC[i].category == CATEGORY_INDEX){
 			THUMBNAIL_PATH.push(CATEGORY_PIC[i].url);
+			THUMBNAIL_SMAILL_PATH.push(CATEGORY_PIC[i].small);
 		}
 	}
 	THUMBNAIL_NUM = THUMBNAIL_PATH.length;
 	
-	var my_len = 0;//缩略图的总宽度
-	var big_len = 0;//背景图的总宽度
+	//var my_len = 0;//缩略图的总宽度
+	//var big_len = 0;//背景图的总宽度
 	//var cur_len = 1600;//当前背景图的总宽度
 	/**
 	 * 初始化相关页面节点属性（如高度\宽度\分类\图片信息等。。。）
 	 **/
 	$('#Bg_Wrapper').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
-	$('#Mask').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
+	//$('#Mask').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
 	$('#J_Pop').height(viewportheight-MENU-1);
 	$('#Thumbnail').draggable({ containment: [0, 0, viewportwidth-OFFHORIZONTAL, viewportheight-OFFVERTICAL], cancel:'.move_cancle' });
 	//添加category的menu dom节点 && 计算每一个hover的高度
@@ -249,22 +251,60 @@ $(document).ready(function() {
 	
 	$('#CategoryMenu > ul > li').click(function(ev){
 		ev.preventDefault();
+		var cur = CATEGORY_INDEX;
 		CATEGORY_INDEX = $(this).prevAll().length;
-		//这里用来添加切换图片文件夹的功能
-		
+		if(cur == CATEGORY_INDEX){
+		}else{
+			//这里用来添加切换图片文件夹的功能
+			THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
+			THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
+			THUMBNAIL_OFF = 0;//缩略图向右偏移的个数
+			THUMBNAIL_NUM = 0;//缩略图的个数
+			THUMBNAIL_PATH = null;
+			THUMBNAIL_PATH = new Array();//当前缩略图存储的所有路径
+			THUMBNAIL_SMAILL_PATH = null;
+			THUMBNAIL_SMAILL_PATH = new Array();//当前缩略图存储的小图的所有路径
+			//CATEGORY_INDEX = 0;//当前是第几个分类
+			for(var change_loop = 0, cate_len = CATEGORY_PIC.length; change_loop < cate_len; change_loop++){
+				if(CATEGORY_PIC[change_loop].category == CATEGORY_INDEX){
+					THUMBNAIL_PATH.push(CATEGORY_PIC[change_loop].url);
+					THUMBNAIL_SMAILL_PATH.push(CATEGORY_PIC[change_loop].small);
+				}
+			}
+			THUMBNAIL_NUM = THUMBNAIL_PATH.length;
+			//删除原先的缩略图
+			$('#Tumbnail_Con > li').remove();
+			//加载缩略图
+			for(var new_loop = 0; new_loop < THUMBNAIL_NUM; new_loop++){
+				$('#Tumbnail_Con').append("<li><img src='"+THUMBNAIL_SMAILL_PATH[new_loop]+"' /></li>");
+			}
+			//计算缩略图总宽度
+			$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
+			//小图标高亮归位
+			$('#J_Small_Hover').animate({'left': 0}, 500);
+			//缩略图高亮移动
+			tumbnail_move();
+			//添加小图标点击事件
+			changeback();
+		}
 	});
 	 
 	/**
 	 * 给小图做滑动效果和大图标滑动效果
 	**/
-	 //首先要计算所有的图片的宽度,并且初始化thumbnail相关信息
+	/*首先要计算所有的图片的宽度,并且初始化thumbnail相关信息
 
 	$('#Tumbnail_Con > li').each(function(index) {
 		my_len += $(this).outerWidth(true);
 	});
-	
-	$('#Tumbnail_Con').css('width', my_len);
-	
+	*/
+	//加载缩略图
+	for(var new_loop = 0; new_loop < THUMBNAIL_NUM; new_loop++){
+		$('#Tumbnail_Con').append("<li><img src='"+THUMBNAIL_SMAILL_PATH[new_loop]+"' /></li>");
+	}
+	//计算缩略图总宽度
+	$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
+
 	/*计算背景总宽度
 	function CalculateBg(){
 		big_len = 0;
@@ -309,17 +349,19 @@ $(document).ready(function() {
 	}
 	
 	//点击缩略图图片，就可以切换背景了
-	$('#Tumbnail_Con > li').click(function(){
-		THUMBNAIL_PREV = THUMBNAIL_INDEX;
-		THUMBNAIL_INDEX = $(this).prevAll().length;
-		if(THUMBNAIL_INDEX < THUMBNAIL_PREV){//新的在旧的前面
-			preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
-		}else if(THUMBNAIL_INDEX > THUMBNAIL_PREV){//新的在旧的后面
-			preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
-		}
-		
-		//alert(THUMBNAIL_INDEX);
-	});
+	function  changeback(){
+		$('#Tumbnail_Con > li').click(function(){
+			THUMBNAIL_PREV = THUMBNAIL_INDEX;
+			THUMBNAIL_INDEX = $(this).prevAll().length;
+			if(THUMBNAIL_INDEX < THUMBNAIL_PREV){//新的在旧的前面
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+			}else if(THUMBNAIL_INDEX > THUMBNAIL_PREV){//新的在旧的后面
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+			}
+			
+			//alert(THUMBNAIL_INDEX);
+		});
+	}
 	
 	//给左右大箭头添加事件
 	$('#left_btn').click(function(ev){
@@ -409,6 +451,10 @@ $(document).ready(function() {
 	smallrightclick();
 	smallleftclick();
 	tumbnail_move();
-	
+	changeback();
+	var myDate=new Date();
+	if(myDate.getDay() != 0){
+		alert('hello');
+	}
 
 });
