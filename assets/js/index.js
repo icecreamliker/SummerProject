@@ -26,9 +26,10 @@ $(document).ready(function() {
 	var viewportwidth = $(window).width();
 	var viewportheight = $(window).height();
 	var viewratio = viewportwidth / viewportheight;
-	var picratio = 1.7777777778;
+	var picratio = 0;
+	var image_size;
 	//计算图片比例，以确定以高还是宽撑满显示
-	function ratio(){
+	function ratio(picratio){
 		var ww = 0, hh = 0;
 		var size = viewratio / picratio;
 		if(size > 1){
@@ -43,8 +44,7 @@ $(document).ready(function() {
 			return [ww, hh];
 		}		
 	}
-	var image_size = ratio();
-	//alert(image_size[1]);
+	//var image_size = ratio();
 	 
 	/**
 	 * 390px为缩略图的宽度，80px为缩略图的高度和menu高度之和，30px为menu的高度
@@ -90,9 +90,16 @@ $(document).ready(function() {
 	$('#J_About_Top').css('marginTop', viewportheight-660);
 	$('#J_Contact_Top').css('marginTop', viewportheight-520);
 	
-	//初始化桌面背景
-	$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
-				
+	var fir_loader = $(new Image());
+	fir_loader.attr('src', THUMBNAIL_PATH[0]);
+	fir_loader.load(function(){
+		image_size = ratio(fir_loader.get(0).width / fir_loader.get(0).height);
+		$('#Loader').css('display','none');
+		//初始化桌面背景
+		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
+	
+	});
+			
 
 	/**
 	 * 给Category添加监听事件
@@ -437,6 +444,7 @@ $(document).ready(function() {
 		}
 		*/
 		loader.load(function(){
+			image_size = ratio(loader.get(0).width / loader.get(0).height);
 			$('#Loader').css('display','none');
 			if(direction == 1){
 				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
@@ -472,11 +480,11 @@ $(document).ready(function() {
 	smallleftclick();
 	tumbnail_move();
 	changeback();
-
+/*
 	var myDate=new Date();
 	if(myDate.getDay() != 0){
 		alert('hello');
 	}
-
+*/
 
 });

@@ -37,6 +37,20 @@
 .grid-s5m0 .main-wrap { margin-left: 427px; }
 .grid-s5m0 .col-sub { width: 427px; margin-left: -100%; }
 
+::selection {
+	background:transparent;
+	color:#fff;
+}
+
+::-moz-selection {
+	background:transparent;
+	color:#fff;
+}
+
+::-webkit-selection {
+	background:transparent;
+	color:#fff;
+}
 
 a, a:hover {
 	text-decoration:none;
@@ -60,6 +74,7 @@ a, a:hover {
 	font-size:0px;
 	text-align:center;
 	margin:auto;
+	z-index:4;
 }
 
 #Bg img {
@@ -78,6 +93,7 @@ a, a:hover {
 	bottom:0px;
 	height:30px;
 	width:100%;
+	z-index:9;
 }
 
 #Name, #Category, #About, #Contact {
@@ -309,6 +325,7 @@ a, a:hover {
 	right:10px;
 	width:35px;
 	height:35px;
+	z-index:103;
 }
 
 #J_Pop_Close a {
@@ -342,6 +359,7 @@ a, a:hover {
 	height:70px;
 	top:45%;
 	left:20px;
+	z-index:46;
 }
 
  #left_btn a{
@@ -363,6 +381,7 @@ a, a:hover {
 	height:70px;
 	top:45%;
 	right:20px;
+	z-index:47;
 }
 
  #right_btn  a{
@@ -462,6 +481,9 @@ a, a:hover {
 	margin: 15px 2px 0 2px;
 	width:10px;
 	height:20px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 #Thumbnail #Thumbnail_Left  a {
 	display:block;
@@ -469,10 +491,16 @@ a, a:hover {
 	width:10px;
 	height:20px;
 	cursor:pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Thumbnail #Thumbnail_Left  a:hover {
 	background:url(../img/icon1.png) no-repeat -340px -86px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Thumbnail #Thumbnail_Right  {
@@ -481,6 +509,9 @@ a, a:hover {
 	margin-top:15px;
 	width:10px;
 	height:20px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 #Thumbnail #Thumbnail_Right  a {
 	display:block;
@@ -488,10 +519,16 @@ a, a:hover {
 	width:10px;
 	height:20px;
 	cursor:pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Thumbnail #Thumbnail_Right  a:hover {
 	background:url(../img/icon1.png) no-repeat -375px -86px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 #Thumbnail #J_Small_Hover {
