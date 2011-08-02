@@ -480,11 +480,5 @@ $(document).ready(function() {
 	smallleftclick();
 	tumbnail_move();
 	changeback();
-/*
-	var myDate=new Date();
-	if(myDate.getDay() != 0){
-		alert('hello');
-	}
-*/
 
 });
