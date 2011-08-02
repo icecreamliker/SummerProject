@@ -30,7 +30,8 @@ $(document).ready(function() {
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
-	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
+	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
+						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
 	var THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
 	var THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
@@ -58,6 +59,31 @@ $(document).ready(function() {
 	//$('#Mask').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
 	$('#J_Pop').height(viewportheight-MENU-1);
 	$('#Thumbnail').draggable({ containment: [0, 0, viewportwidth-OFFHORIZONTAL, viewportheight-OFFVERTICAL], cancel:'.move_cancle' });
+	//解决ie8下hover效果
+	$('.flickr').mouseenter(function(){
+		$('.flickr > a').css('background-position', '-114px -31px');
+	});
+	$('.flickr').mouseleave(function(){
+		$('.flickr > a').css('background-position', '-114px 0');
+	});
+	$('.facebook').mouseenter(function(){
+		$('.facebook > a').css('background-position', '0 -31px');
+	});
+	$('.facebook').mouseleave(function(){
+		$('.facebook > a').css('background-position', '0 0');
+	});
+	$('.moko').mouseenter(function(){
+		$('.moko > a').css('background-position', '-283px 0px');
+	});
+	$('.moko').mouseleave(function(){
+		$('.moko > a').css('background-position', '-216px 0');
+	});
+	$('.weibo').mouseenter(function(){
+		$('.weibo > a').css('background-position', '-130px -64px');
+	});
+	$('.weibo').mouseleave(function(){
+		$('.weibo > a').css('background-position', '0 -64px');
+	});
 	//添加category的menu dom节点 && 计算每一个hover的高度
 	var CATEGORY_LEN = new Array();
 	for(var loop = 0, len = CATEGORY.length; loop < len; loop++){
@@ -267,6 +293,8 @@ $(document).ready(function() {
 			$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
 			//小图标高亮归位
 			$('#J_Small_Hover').animate({'left': 0}, 500);
+			//移动偏移归位
+			$('#Thumbnail_Wrapper').scrollLeft(0);
 			//缩略图高亮移动
 			tumbnail_move();
 			//添加小图标点击事件
