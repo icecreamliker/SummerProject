@@ -1,27 +1,6 @@
 $(document).ready(function() {
 	/**
 	 * 获取屏幕的实际宽度和高度
-	 
-	var viewportwidth;
-	var viewportheight;
-	 
-	 // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
-	 
-	 if (typeof window.innerWidth != 'undefined')
-	 {
-		  viewportwidth = window.innerWidth,
-		  viewportheight = window.innerHeight
-	 }
-	 
-	// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
-
-	 else if (typeof document.documentElement != 'undefined'
-		 && typeof document.documentElement.clientWidth !=
-		 'undefined' && document.documentElement.clientWidth != 0)
-	 {
-		   viewportwidth = document.documentElement.clientWidth,
-		   viewportheight = document.documentElement.clientHeight
-	 }
 	 **/
 	var viewportwidth = $(window).width();
 	var viewportheight = $(window).height();
@@ -49,7 +28,7 @@ $(document).ready(function() {
 	/**
 	 * 390px为缩略图的宽度，80px为缩略图的高度和menu高度之和，30px为menu的高度
 	 **/
-	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false;
+	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
 	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
@@ -91,15 +70,14 @@ $(document).ready(function() {
 	$('#J_Contact_Top').css('marginTop', viewportheight-520);
 	
 	var fir_loader = $(new Image());
-	fir_loader.attr('src', THUMBNAIL_PATH[0]);
 	fir_loader.load(function(){
 		image_size = ratio(fir_loader.get(0).width / fir_loader.get(0).height);
 		$('#Loader').css('display','none');
 		//初始化桌面背景
-		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
-	
+		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;	opacity:0; filter:alpha(opacity=0);'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
+		$('#Bg > li').animate({opacity: 1}, 1200);
 	});
-			
+	fir_loader.attr('src', THUMBNAIL_PATH[0]);		
 
 	/**
 	 * 给Category添加监听事件
@@ -311,16 +289,6 @@ $(document).ready(function() {
 	}
 	//计算缩略图总宽度
 	$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
-
-	/*计算背景总宽度
-	function CalculateBg(){
-		big_len = 0;
-		$('#Bg > li').each(function(index) {
-			big_len += $(this).outerWidth(true);
-		});
-		$('#Bg').css('width', big_len);
-	}
-	*/
 	
 	function smallrightclick(){
 		$('#Thumbnail_Right').click(function(ev){
@@ -358,43 +326,48 @@ $(document).ready(function() {
 	//点击缩略图图片，就可以切换背景了
 	function  changeback(){
 		$('#Tumbnail_Con > li').click(function(){
-			THUMBNAIL_PREV = THUMBNAIL_INDEX;
-			THUMBNAIL_INDEX = $(this).prevAll().length;
-			if(THUMBNAIL_INDEX < THUMBNAIL_PREV){//新的在旧的前面
-				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
-			}else if(THUMBNAIL_INDEX > THUMBNAIL_PREV){//新的在旧的后面
-				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+			if(IsClick){
+				THUMBNAIL_PREV = THUMBNAIL_INDEX;
+				THUMBNAIL_INDEX = $(this).prevAll().length;
+				if(THUMBNAIL_INDEX < THUMBNAIL_PREV){//新的在旧的前面
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+				}else if(THUMBNAIL_INDEX > THUMBNAIL_PREV){//新的在旧的后面
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+				}
 			}
 			
-			//alert(THUMBNAIL_INDEX);
 		});
 	}
 	
 	//给左右大箭头添加事件
 	$('#left_btn').click(function(ev){
 			ev.preventDefault();
-			if(THUMBNAIL_INDEX > 0){
-				THUMBNAIL_PREV = THUMBNAIL_INDEX;
-				--THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '-=45'}, 500);
-				/* 可以切换图片了 */
-				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
-				
-			}else{
-				//如果当前的hover已经是第一个了，就不用向前移动了
+			if(IsClick){
+				if(THUMBNAIL_INDEX > 0){
+					THUMBNAIL_PREV = THUMBNAIL_INDEX;
+					--THUMBNAIL_INDEX;
+					$('#J_Small_Hover').animate({'left': '-=45'}, 500);
+					/* 可以切换图片了 */
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+					
+				}else{
+					//如果当前的hover已经是第一个了，就不用向前移动了
+				}
 			}
 	});
 	$('#right_btn').click(function(ev){
 			ev.preventDefault();
-			if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
-				THUMBNAIL_PREV = THUMBNAIL_INDEX;
-				++THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '+=45'}, 500);
-				/* 可以切换图片了 */
-				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
-				
-			}else{
-				//如果当前的hover已经是最后了，就不用向后移动了
+			if(IsClick){
+				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
+					THUMBNAIL_PREV = THUMBNAIL_INDEX;
+					++THUMBNAIL_INDEX;
+					$('#J_Small_Hover').animate({'left': '+=45'}, 500);
+					/* 可以切换图片了 */
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+					
+				}else{
+					//如果当前的hover已经是最后了，就不用向后移动了
+				}
 			}
 	});
 	
@@ -422,7 +395,6 @@ $(document).ready(function() {
 		var w = 0;
 		$('#Loader').css('display','block');
 		var loader = $(new Image());
-		loader.attr('src', path);
 		/* 读取缓存
 		if(loader.complete){
 			$('#Loader').css('display','none');
@@ -444,21 +416,15 @@ $(document).ready(function() {
 		}
 		*/
 		loader.load(function(){
-			image_size = ratio(loader.get(0).width / loader.get(0).height);
 			$('#Loader').css('display','none');
+			IsClick = false;
+			image_size = ratio(loader.get(0).width / loader.get(0).height);
 			if(direction == 1){
 				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
-				/*var img_container = $(document.createElement('li'));
-				var img = $(new Image()).attr('src', path);
-				img_container.append(img);
-				$('#Bg').append(img_container);
-				img.attr('width', image_size[0]);
-				img.attr('height', image_size[2]);
-				img_container.css('left',viewportwidth).css('width',viewportwidth);
-				*/
 				$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
 					//删除前一张的图片
 					$(this).remove();
+					IsClick = true;
 				});
 				$('#Bg > li').last().animate({'left': 0}, 800);
 			}else{
@@ -466,11 +432,12 @@ $(document).ready(function() {
 				$('#Bg > li').first().animate({'left': 0}, 800);
 				$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
 					$(this).remove();
+					IsClick = true;
 				});
 			}
 			
 		});
-
+		loader.attr('src', path);
 		
 	}
 	

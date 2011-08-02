@@ -223,7 +223,7 @@ a, a:hover {
 }
 
 #J_Pop_Contact .ways {
-	height:57px;
+	height:86px;
 	width:660px;
 }
 
@@ -243,10 +243,15 @@ a, a:hover {
 	background:url(../img/icon2.png) no-repeat -114px 0;
 	width:85px;
 	height:26px;
+	zoom:1;
+	overflow:hidden;
 }
+
+
 #J_Pop_Contact .ways .flickr a:hover {
 	background:url(../img/icon2.png) no-repeat -114px -31px;
 }
+
 
 #J_Pop_Contact .ways .facebook {
 	width:100px;
@@ -259,9 +264,11 @@ a, a:hover {
 	background:url(../img/icon2.png) no-repeat 0 0;
 	width:100px;
 	height:23px;
+	zoom:1;
 }
 #J_Pop_Contact .ways .facebook a:hover {
 	background:url(../img/icon2.png) no-repeat 0 -31px;
+	zoom:1;
 }
 
 #J_Pop_Contact .ways .moko {
@@ -275,9 +282,11 @@ a, a:hover {
 	background:url(../img/icon2.png) no-repeat -216px 0;
 	width:60px;
 	height:57px;
+	zoom:1;
 }
 #J_Pop_Contact .ways .moko a:hover {
 	background:url(../img/icon2.png) no-repeat -283px 0px;
+	zoom:1;
 }
 #J_Pop_Contact .ways .weibo {
 	width:120px;
@@ -290,10 +299,12 @@ a, a:hover {
 	background:url(../img/icon2.png) no-repeat 0 -64px;
 	width:120px;
 	height:37px;
+	zoom:1;
 }
 
 #J_Pop_Contact .ways .weibo a:hover {
 	background:url(../img/icon2.png) no-repeat -130px -64px;
+	zoom:1;
 }
 
 #J_Pop_About .title {
