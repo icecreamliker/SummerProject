@@ -5,22 +5,35 @@ $(document).ready(function() {
 	var viewportwidth = $(window).width();
 	var viewportheight = $(window).height();
 	var viewratio = viewportwidth / viewportheight;
-	var picratio = 0;
 	var image_size;
 	//计算图片比例，以确定以高还是宽撑满显示
-	function ratio(picratio){
-		var ww = 0, hh = 0;
+	function ratio(pic_width, pic_height){
+		var ww = 0, hh = 0, picratio = pic_width / pic_height;
+		var inside_top = 0;
 		var size = viewratio / picratio;
 		if(size > 1){
-			//屏幕较宽，图片高度撑满
-			ww = viewportheight * picratio;
-			hh = viewportheight;
-			return [ww, hh];
+			if(viewportheight <= pic_height){
+				//屏幕较宽，图片高度撑满
+				ww = viewportheight * picratio;
+				hh = viewportheight;
+				return [ww, hh, 0];
+			}else{
+				inside_top = (viewportheight-pic_height)/2;
+				return [pic_width, pic_height, inside_top];
+			}
+			
 		}else{
-			//屏幕较窄，图片宽度撑满
-			ww = viewportwidth;
-			hh = viewportwidth / picratio;
-			return [ww, hh];
+			if(viewportwidth <= pic_width)
+			{
+				//屏幕较窄，图片宽度撑满
+				ww = viewportwidth;
+				hh = viewportwidth / picratio;
+				inside_top = (viewportheight-hh)/2;
+				return [ww, hh, inside_top];
+			}else{
+				inside_top = (viewportheight-pic_height)/2;
+				return [pic_width, pic_height, inside_top];
+			}
 		}		
 	}
 	//var image_size = ratio();
@@ -30,7 +43,7 @@ $(document).ready(function() {
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
-	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
+	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/icon1.png'},{category:0, small:'assets/img/small2.png', url:'assets/img/icon2.png'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
 						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
 	var THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
@@ -97,10 +110,10 @@ $(document).ready(function() {
 	
 	var fir_loader = $(new Image());
 	fir_loader.load(function(){
-		image_size = ratio(fir_loader.get(0).width / fir_loader.get(0).height);
+		image_size = ratio(fir_loader.get(0).width, fir_loader.get(0).height);
 		$('#Loader').css('display','none');
 		//初始化桌面背景
-		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;	opacity:0; filter:alpha(opacity=0);'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
+		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;	opacity:0; filter:alpha(opacity=0);'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
 		$('#Bg > li').animate({opacity: 1}, 1200);
 	});
 	fir_loader.attr('src', THUMBNAIL_PATH[0]);		
@@ -446,19 +459,20 @@ $(document).ready(function() {
 		loader.load(function(){
 			$('#Loader').css('display','none');
 			IsClick = false;
-			image_size = ratio(loader.get(0).width / loader.get(0).height);
+			image_size = ratio(loader.get(0).width , loader.get(0).height);
 			if(direction == 1){
-				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
+				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
 				$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
-					//删除前一张的图片
+					//删除前面所有的图片
 					$(this).remove();
 					IsClick = true;
 				});
 				$('#Bg > li').last().animate({'left': 0}, 800);
 			}else{
-				$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
+				$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
 				$('#Bg > li').first().animate({'left': 0}, 800);
 				$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
+					//删除后面的所有图片
 					$(this).remove();
 					IsClick = true;
 				});

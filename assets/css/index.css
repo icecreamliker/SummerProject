@@ -73,6 +73,7 @@ a, a:hover {
 	line-height:0px;
 	font-size:0px;
 	text-align:center;
+	vertical-align:middle;
 	margin:auto;
 	z-index:4;
 }
