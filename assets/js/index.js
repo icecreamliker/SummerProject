@@ -127,27 +127,27 @@ $(document).ready(function() {
 		if(IsAbout){
 			IsAbout = false;
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(500, 0 ,function(){
+			$('#J_Pop_About').fadeTo(600, 0 ,function(){
 				$(this).css('display','none');
-				$('#J_Pop').toggle( 'slide', {direction:'up'}, 500);
+				$('#J_Pop').toggle( 'slide', {direction:'up'}, 600);
 			});
 		}		
 		if(IsContact){
 			IsContact = false;
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
+			$('#J_Pop_Contact').fadeTo(600, 0 ,function(){
 				$(this).css('display','none');
-				$('#J_Pop').toggle( 'slide', {direction:'up'}, 500);
+				$('#J_Pop').toggle( 'slide', {direction:'up'}, 600);
 			});
 		}
 		if(!IsCategory){
 			IsCategory = true;
 			$(this).addClass('highlight');
-			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 600);
 		}else{
 			IsCategory =false;
 			$(this).removeClass('highlight');
-			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 600);
 		}
 	});
 	
@@ -160,21 +160,21 @@ $(document).ready(function() {
 		if(IsCategory){
 			IsCategory =false;
 			$('#Category').removeClass('highlight');
-			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 600);
 		}
 		if(!IsAbout  && !IsContact){
 			IsAbout = true;
 			$('#About').addClass('highlight');
-			$('#J_Pop').toggle( 'slide', {direction:'up'}, 500,function(){
-				$('#J_Pop_About').fadeTo(500, 1);	
+			$('#J_Pop').toggle( 'slide', {direction:'up'}, 600,function(){
+				$('#J_Pop_About').fadeTo(600, 1);	
 			});
 		}else if(!IsAbout && IsContact){//进入about和contact的切换流程
 			IsAbout = true;
 			IsContact = false;
 			$('#About').addClass('highlight');
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
-				$('#J_Pop_About').fadeTo(500, 1);
+			$('#J_Pop_Contact').fadeTo(600, 0 ,function(){
+				$('#J_Pop_About').fadeTo(600, 1);
 				$(this).css('display','none');
 			});
 			
@@ -182,8 +182,8 @@ $(document).ready(function() {
 		}else{
 			IsAbout = false;
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(500, 0 ,function(){
-				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+			$('#J_Pop_About').fadeTo(600, 0 ,function(){
+				$('#J_Pop').toggle('slide', {direction:'up'}, 600);
 				$(this).css('display','none');
 			});
 			
@@ -198,28 +198,28 @@ $(document).ready(function() {
 		if(IsCategory){
 			IsCategory =false;
 			$('#Category').removeClass('highlight');
-			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 500);
+			$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 600);
 		}
 		if(!IsContact && !IsAbout){
 			IsContact = true;
 			$('#Contact').addClass('highlight');
-			$('#J_Pop').toggle( 'slide', {direction:'up'}, 500,function(){
-				$('#J_Pop_Contact').fadeTo(500, 1);	
+			$('#J_Pop').toggle( 'slide', {direction:'up'}, 600,function(){
+				$('#J_Pop_Contact').fadeTo(600, 1);	
 			});
 		}else if(!IsContact && IsAbout){//进入contact和about的切换流程
 			IsContact = true;
 			IsAbout = false;
 			$('#Contact').addClass('highlight');
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(500, 0 ,function(){
-				$('#J_Pop_Contact').fadeTo(500, 1);
+			$('#J_Pop_About').fadeTo(600, 0 ,function(){
+				$('#J_Pop_Contact').fadeTo(600, 1);
 				$(this).css('display','none');
 			});
 		}else{
 			IsContact = false;
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
-				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+			$('#J_Pop_Contact').fadeTo(600, 0 ,function(){
+				$('#J_Pop').toggle('slide', {direction:'up'}, 600);
 				$(this).css('display','none');
 			});
 		}
@@ -233,15 +233,15 @@ $(document).ready(function() {
 		ev.preventDefault();
 		if(IsAbout){
 			$('#About').removeClass('highlight');
-			$('#J_Pop_About').fadeTo(500, 0 ,function(){
-				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+			$('#J_Pop_About').fadeTo(600, 0 ,function(){
+				$('#J_Pop').toggle('slide', {direction:'up'}, 600);
 				$(this).css('display','none');
 			});
 		}
 		if(IsContact){
 			$('#Contact').removeClass('highlight');
-			$('#J_Pop_Contact').fadeTo(500, 0 ,function(){
-				$('#J_Pop').toggle('slide', {direction:'up'}, 500);
+			$('#J_Pop_Contact').fadeTo(600, 0 ,function(){
+				$('#J_Pop').toggle('slide', {direction:'up'}, 600);
 				$(this).css('display','none');
 			});
 		}
@@ -306,7 +306,7 @@ $(document).ready(function() {
 			//计算缩略图总宽度
 			$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
 			//小图标高亮归位
-			$('#J_Small_Hover').animate({'left': 0}, 500);
+			$('#J_Small_Hover').animate({'left': 0}, 800);
 			//移动偏移归位
 			$('#Thumbnail_Wrapper').scrollLeft(0);
 			//缩略图高亮移动
@@ -341,11 +341,11 @@ $(document).ready(function() {
 					flag = true;
 			}
 			if(flag){
-				$('#Thumbnail_Wrapper').animate({'scrollLeft': '+=45'}, 400, function(){
+				$('#Thumbnail_Wrapper').animate({'scrollLeft': '+=45'}, 600, function(){
 				//preload(CATEGORY_PIC[0].url);
 				//$('#Bg_Wrapper').animate({'scrollLeft': '+='+cur_len}, 1000, function(){});	
 			});
-				$('#J_Small_Hover').animate({'left': '-=45'}, 500,function(){});
+				$('#J_Small_Hover').animate({'left': '-=45'}, 600,function(){});
 			}
 		});
 	}
@@ -358,9 +358,9 @@ $(document).ready(function() {
 					flag = true;
 			}
 			if(flag){
-				$('#Thumbnail_Wrapper').animate({'scrollLeft': '-=45'}, 400, function(){
+				$('#Thumbnail_Wrapper').animate({'scrollLeft': '-=45'}, 600, function(){
 				});
-				$('#J_Small_Hover').animate({'left': '+=45'}, 500,function(){});
+				$('#J_Small_Hover').animate({'left': '+=45'}, 600,function(){});
 			}
 		});
 	}
@@ -388,7 +388,7 @@ $(document).ready(function() {
 				if(THUMBNAIL_INDEX > 0){
 					THUMBNAIL_PREV = THUMBNAIL_INDEX;
 					--THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '-=45'}, 500);
+					$('#J_Small_Hover').animate({'left': '-=45'}, 800);
 					/* 可以切换图片了 */
 					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
 					
@@ -403,7 +403,7 @@ $(document).ready(function() {
 				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
 					THUMBNAIL_PREV = THUMBNAIL_INDEX;
 					++THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '+=45'}, 500);
+					$('#J_Small_Hover').animate({'left': '+=45'}, 800);
 					/* 可以切换图片了 */
 					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
 					
@@ -420,12 +420,12 @@ $(document).ready(function() {
 			list = list * 45;
 			list = list - $('#Thumbnail_Wrapper').scrollLeft();
 			$('#J_Small_Hover').clearQueue();
-			$('#J_Small_Hover').animate({left: list}, 500,function(){});
+			$('#J_Small_Hover').animate({left: list}, 800,function(){});
 		});
 
 		$('#Tumbnail_Con > li').mouseleave(function(){
 			$('#J_Small_Hover').clearQueue();
-			$('#J_Small_Hover').animate({left: (THUMBNAIL_INDEX-THUMBNAIL_OFF)*45}, 500,function(){});
+			$('#J_Small_Hover').animate({left: (THUMBNAIL_INDEX-THUMBNAIL_OFF)*45}, 800,function(){});
 		});
 	}
 	
@@ -466,7 +466,7 @@ $(document).ready(function() {
 				image_size = ratio(loader.get(0).width , loader.get(0).height);
 				if(direction == 1){
 					$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
-					$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
+					$('#Bg > li').first().animate({'left': (-viewportwidth)}, 1000, function(){
 						//删除前面所有的图片
 						$(this).remove();
 						/*
@@ -478,11 +478,11 @@ $(document).ready(function() {
 						*/
 						IsClick = true;
 					});
-					$('#Bg > li').last().animate({'left': 0}, 800);
+					$('#Bg > li').last().animate({'left': 0}, 1000);
 				}else{
 					$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
-					$('#Bg > li').first().animate({'left': 0}, 800);
-					$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
+					$('#Bg > li').first().animate({'left': 0}, 1000);
+					$('#Bg > li').last().animate({'left': viewportwidth}, 1000, function(){
 						//删除后面的所有图片
 						$(this).remove();
 						/*
@@ -512,9 +512,11 @@ $(document).ready(function() {
 		viewratio = viewportwidth / viewportheight;
 		$('#Bg').css('height',viewportheight).css('width',viewportwidth);
 		$('#Bg > li').css('height',viewportheight).css('width',viewportwidth);
-		alert($('#Bg > li > img').get(0).width);
-		alert($('#Bg > li > img').get(0).height);
-		//image_size = ratio();
+		var originImage = new Image();
+		var my_img = $('#Bg > li > img');
+		originImage.src = my_img.attr('src');
+		image_size = ratio(originImage.width, originImage.height);
+		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
 	});
 	
 
