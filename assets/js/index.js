@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var viewportheight = $(window).height();
 	var viewratio = viewportwidth / viewportheight;
 	var image_size;
+	var current_image = '';//用来指示是否是当前的图片地址
 	//计算图片比例，以确定以高还是宽撑满显示
 	function ratio(pic_width, pic_height){
 		var ww = 0, hh = 0, picratio = pic_width / pic_height;
@@ -434,6 +435,7 @@ $(document).ready(function() {
 	 ***/
 	function preload(path, direction){
 		var w = 0;
+		current_image = path;//设置当前图片的地址路径
 		$('#Loader').css('display','block');
 		var loader = $(new Image());
 		/* 读取缓存
@@ -457,31 +459,63 @@ $(document).ready(function() {
 		}
 		*/
 		loader.load(function(){
-			$('#Loader').css('display','none');
-			IsClick = false;
-			image_size = ratio(loader.get(0).width , loader.get(0).height);
-			if(direction == 1){
-				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
-				$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
-					//删除前面所有的图片
-					$(this).remove();
-					IsClick = true;
-				});
-				$('#Bg > li').last().animate({'left': 0}, 800);
+			if($(this).attr('src') == current_image){
+				//starting
+				$('#Loader').css('display','none');
+				IsClick = false;
+				image_size = ratio(loader.get(0).width , loader.get(0).height);
+				if(direction == 1){
+					$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
+					$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
+						//删除前面所有的图片
+						$(this).remove();
+						/*
+						var all_image = $('#Bg > li');
+						var all_len = all_image.length;
+						for(var j = 0; j < (all_len-1); j++){
+							all_image.eq(j).remove();
+						}
+						*/
+						IsClick = true;
+					});
+					$('#Bg > li').last().animate({'left': 0}, 800);
+				}else{
+					$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
+					$('#Bg > li').first().animate({'left': 0}, 800);
+					$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
+						//删除后面的所有图片
+						$(this).remove();
+						/*
+						var all_image2 = $('#Bg > li');
+						var all_len2 = all_image2.length;
+						for(var j2 = 1; j2 < all_len2; j2++){
+							all_image2.eq(j2).remove();
+						}
+						*/
+						IsClick = true;
+					});
+				}
 			}else{
-				$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
-				$('#Bg > li').first().animate({'left': 0}, 800);
-				$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
-					//删除后面的所有图片
-					$(this).remove();
-					IsClick = true;
-				});
+				//延迟加载的话，就不执行了
 			}
-			
+			//ending
 		});
 		loader.attr('src', path);
 		
 	}
+	
+	//窗口resize事件绑定
+	$(window).resize(function() {
+	//$('#log').append('<div>Handler for .resize() called.</div>');
+		viewportwidth = $(window).width();
+		viewportheight = $(window).height();
+		viewratio = viewportwidth / viewportheight;
+		$('#Bg').css('height',viewportheight).css('width',viewportwidth);
+		$('#Bg > li').css('height',viewportheight).css('width',viewportwidth);
+		alert($('#Bg > li > img').get(0).width);
+		alert($('#Bg > li > img').get(0).height);
+		//image_size = ratio();
+	});
 	
 
 	//初始化动作

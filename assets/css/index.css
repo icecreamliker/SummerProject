@@ -153,7 +153,7 @@ a, a:hover {
 	width:100%;
 	color:#fff;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
+	font-size: 10px;
 	height: 25px;
 	padding-top: 5px;
 }
@@ -215,6 +215,15 @@ a, a:hover {
 
 #J_Pop_Contact .email .email1 {
 	margin-top:15px;
+}
+
+#J_Pop_Contact .email .email1 a {
+	color:#fff;
+}
+
+#J_Pop_Contact .email .email1 a:hover {
+	color:#fff;
+	text-decoration:underline;
 }
 
 #J_Pop_Contact .desc {
