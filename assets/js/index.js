@@ -504,9 +504,20 @@ $(document).ready(function() {
 		
 	}
 	
-	//窗口resize事件绑定
+	//窗口resize事件和屏幕旋转绑定
+	function checkOrientation(){
+		viewportwidth = $(window).width();
+		viewportheight = $(window).height();
+		viewratio = viewportwidth / viewportheight;
+		$('#Bg').css('height',viewportheight).css('width',viewportwidth);
+		$('#Bg > li').css('height',viewportheight).css('width',viewportwidth);
+		var originImage = new Image();
+		var my_img = $('#Bg > li > img');
+		originImage.src = my_img.attr('src');
+		image_size = ratio(originImage.width, originImage.height);
+		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
+	}
 	$(window).resize(function() {
-	//$('#log').append('<div>Handler for .resize() called.</div>');
 		viewportwidth = $(window).width();
 		viewportheight = $(window).height();
 		viewratio = viewportwidth / viewportheight;
@@ -518,7 +529,9 @@ $(document).ready(function() {
 		image_size = ratio(originImage.width, originImage.height);
 		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
 	});
-	
+	if(window.addEventListener){
+		window.addEventListener("orientationchange", checkOrientation, false);
+	}
 
 	//初始化动作
 	smallrightclick();
