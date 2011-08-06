@@ -423,18 +423,13 @@ $(document).ready(function() {
 	});
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-        // event.preventDefault(); 
-		alert(2);
-		/*
+         event.preventDefault(); 
          if (!event.touches.length) return;  
          var touch = event.touches[0];  
-         TOUCH_OFF_START = touch.pageX;    
-  */
+         TOUCH_OFF_START = touch.pageX;
 	}
 	function touchEnd(event) {  
-        // event.preventDefault();  
-		 alert(1);
-		 /*
+         event.preventDefault();  
          if (!event.touches.length) return;  
          var touch = event.touches[0];  
          TOUCH_OFF_END = touch.pageX;
@@ -447,17 +442,11 @@ $(document).ready(function() {
 		 //所有动作处理完成以后，归零
 		 TOUCH_OFF_START = 0;
 		 TOUCH_OFF_END = 0;
-		 */
   
 	}
-	function touchMove(){
-		alert('yaoli');
-	}
 	if(window.addEventListener){
-		alert(11)
 		document.addEventListener("touchstart", touchStart, false);
 		document.addEventListener("touchend", touchEnd, false);
-		document.addEventListener("touchmove", touchMove, false);
 	}
 	//缩略图高亮移动
 	function tumbnail_move(){
