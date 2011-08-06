@@ -449,10 +449,15 @@ $(document).ready(function() {
 		 TOUCH_OFF_END = 0;
 		 */
   
-	}  
+	}
+	function touchMove(){
+		alert('yaoli');
+	}
 	if(window.addEventListener){
+		alert(11)
 		window.addEventListener("touchstart", touchStart, false);
 		window.addEventListener("touchend", touchEnd, false);
+		window.addEventListener("touchmove", touchMove, false);
 	}
 	//缩略图高亮移动
 	function tumbnail_move(){
