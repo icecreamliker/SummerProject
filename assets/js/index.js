@@ -43,6 +43,7 @@ $(document).ready(function() {
 	 * 390px为缩略图的宽度，80px为缩略图的高度和menu高度之和，30px为menu的高度
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
+	var TOUCH_OFF_START = 0, TOUCH_OFF_END = 0;
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
 	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/icon1.png'},{category:0, small:'assets/img/small2.png', url:'assets/img/icon2.png'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
 						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
@@ -300,8 +301,8 @@ $(document).ready(function() {
 				}
 				THUMBNAIL_NUM = THUMBNAIL_PATH.length;
 				//展示一些小效果
-				//$('#Thumbnail').effect('bounce', 200);
-				$('#Thumbnail').effect('shake', 200);
+				$('#Thumbnail').effect('bounce', 200);
+				//$('#Thumbnail').effect('shake', 200);
 				//删除原先的缩略图
 				$('#Tumbnail_Con > li').remove();
 				//加载缩略图
@@ -420,7 +421,34 @@ $(document).ready(function() {
 				}
 			}
 	});
-	
+	//给ipad，iphone添加手指滑动事件
+	function touchStart(event) {  
+         event.preventDefault();  
+         if (!event.touches.length) return;  
+         var touch = event.touches[0];  
+         TOUCH_OFF_START = touch.pageX;    
+  
+	}
+	function touchEnd(event) {  
+         event.preventDefault();  
+         if (!event.touches.length) return;  
+         var touch = event.touches[0];  
+         TOUCH_OFF_END = touch.pageX;
+		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
+		 if(off_size >=150){//向右移动
+			alert('向右移动');
+		 }else if(off_size <= -150){//向左移动
+			alert('向左移动');
+		 }
+		 //所有动作处理完成以后，归零
+		 TOUCH_OFF_START = 0;
+		 TOUCH_OFF_END = 0;
+  
+	}  
+	if(window.addEventListener){
+		window.addEventListener("touchstart", touchStart, false);
+		window.addEventListener("touchend", touchEnd, false);
+	}
 	//缩略图高亮移动
 	function tumbnail_move(){
 		$('#Tumbnail_Con > li').mouseenter(function(){
