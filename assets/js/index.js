@@ -446,8 +446,10 @@ $(document).ready(function() {
   
 	}
 	if(window.addEventListener){
-		document.addEventListener("touchstart", touchStart, false);
-		document.addEventListener("touchend", touchEnd, false);
+		alert(1)
+		var m = document.getElementById('My_Scroll');
+		m.addEventListener("touchstart", touchStart, false);
+		m.addEventListener("touchend", touchEnd, false);
 	}
 	//缩略图高亮移动
 	function tumbnail_move(){
