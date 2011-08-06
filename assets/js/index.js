@@ -45,8 +45,8 @@ $(document).ready(function() {
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
 	var TOUCH_OFF_START = 0, TOUCH_OFF_END = 0;
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
-	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/icon1.png'},{category:0, small:'assets/img/small2.png', url:'assets/img/icon2.png'},{category:0, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
-						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big3.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
+	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/icon1.png'},{category:0, small:'assets/img/small2.png', url:'assets/img/icon2.png'},{category:0, small:'assets/img/small3.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
+						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
 	var CATEGORY_INDEX = 0;//category hover的高亮当前是第几个
 	var THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
 	var THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
@@ -423,7 +423,7 @@ $(document).ready(function() {
 	});
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-         event.preventDefault(); 
+        // event.preventDefault(); 
 		alert(2);
 		/*
          if (!event.touches.length) return;  
@@ -432,7 +432,7 @@ $(document).ready(function() {
   */
 	}
 	function touchEnd(event) {  
-         event.preventDefault();  
+        // event.preventDefault();  
 		 alert(1);
 		 /*
          if (!event.touches.length) return;  
