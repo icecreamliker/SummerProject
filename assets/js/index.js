@@ -423,17 +423,18 @@ $(document).ready(function() {
 	});
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-         event.preventDefault(); 
-         if (!event.touches.length) return;  
+         //event.preventDefault(); 
+         //if (!event.touches.length) return;  
          var touch = event.touches[0];  
          TOUCH_OFF_START = touch.pageX;
 	}
 	function touchEnd(event) {  
-         event.preventDefault();  
-         if (!event.touches.length) return;  
+        // event.preventDefault();  
+        // if (!event.touches.length) return;  
          var touch = event.touches[0];  
          TOUCH_OFF_END = touch.pageX;
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
+		 alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
 		 if(off_size >=150){//向右移动
 			alert('向右移动');
 		 }else if(off_size <= -150){//向左移动
