@@ -423,14 +423,18 @@ $(document).ready(function() {
 	});
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-         event.preventDefault();  
+         event.preventDefault(); 
+		alert(2);
+		/*
          if (!event.touches.length) return;  
          var touch = event.touches[0];  
          TOUCH_OFF_START = touch.pageX;    
-  
+  */
 	}
 	function touchEnd(event) {  
          event.preventDefault();  
+		 alert(1);
+		 /*
          if (!event.touches.length) return;  
          var touch = event.touches[0];  
          TOUCH_OFF_END = touch.pageX;
@@ -443,6 +447,7 @@ $(document).ready(function() {
 		 //所有动作处理完成以后，归零
 		 TOUCH_OFF_START = 0;
 		 TOUCH_OFF_END = 0;
+		 */
   
 	}  
 	if(window.addEventListener){
