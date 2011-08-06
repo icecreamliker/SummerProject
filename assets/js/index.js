@@ -432,7 +432,7 @@ $(document).ready(function() {
 	function touchEnd(event) {  
         // event.preventDefault();  
         // if (!event.touches.length) return;  
-         var touch = event.touch;  
+         var touch = event.changedTouches[0];  
          TOUCH_OFF_END = touch.pageX;
 		 alert(TOUCH_OFF_END);
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
