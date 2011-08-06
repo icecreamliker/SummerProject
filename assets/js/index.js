@@ -276,43 +276,51 @@ $(document).ready(function() {
 	
 	$('#CategoryMenu > ul > li').click(function(ev){
 		ev.preventDefault();
-		var cur = CATEGORY_INDEX;
-		CATEGORY_INDEX = $(this).prevAll().length;
-		if(cur == CATEGORY_INDEX){
+		if(!IsClick){
 		}else{
-			//这里用来添加切换图片文件夹的功能
-			THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
-			THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
-			THUMBNAIL_OFF = 0;//缩略图向右偏移的个数
-			THUMBNAIL_NUM = 0;//缩略图的个数
-			THUMBNAIL_PATH = null;
-			THUMBNAIL_PATH = new Array();//当前缩略图存储的所有路径
-			THUMBNAIL_SMAILL_PATH = null;
-			THUMBNAIL_SMAILL_PATH = new Array();//当前缩略图存储的小图的所有路径
-			//CATEGORY_INDEX = 0;//当前是第几个分类
-			for(var change_loop = 0, cate_len = CATEGORY_PIC.length; change_loop < cate_len; change_loop++){
-				if(CATEGORY_PIC[change_loop].category == CATEGORY_INDEX){
-					THUMBNAIL_PATH.push(CATEGORY_PIC[change_loop].url);
-					THUMBNAIL_SMAILL_PATH.push(CATEGORY_PIC[change_loop].small);
+			var cur = CATEGORY_INDEX;
+			CATEGORY_INDEX = $(this).prevAll().length;
+			if(cur == CATEGORY_INDEX){
+			}else{
+				//这里用来添加切换图片文件夹的功能
+				THUMBNAIL_INDEX = 0;//缩略图 hover的高亮当前是第几个
+				THUMBNAIL_PREV = 0;//缩略图 前一个高亮的编号
+				THUMBNAIL_OFF = 0;//缩略图向右偏移的个数
+				THUMBNAIL_NUM = 0;//缩略图的个数
+				THUMBNAIL_PATH = null;
+				THUMBNAIL_PATH = new Array();//当前缩略图存储的所有路径
+				THUMBNAIL_SMAILL_PATH = null;
+				THUMBNAIL_SMAILL_PATH = new Array();//当前缩略图存储的小图的所有路径
+				//CATEGORY_INDEX = 0;//当前是第几个分类
+				for(var change_loop = 0, cate_len = CATEGORY_PIC.length; change_loop < cate_len; change_loop++){
+					if(CATEGORY_PIC[change_loop].category == CATEGORY_INDEX){
+						THUMBNAIL_PATH.push(CATEGORY_PIC[change_loop].url);
+						THUMBNAIL_SMAILL_PATH.push(CATEGORY_PIC[change_loop].small);
+					}
 				}
+				THUMBNAIL_NUM = THUMBNAIL_PATH.length;
+				//展示一些小效果
+				//$('#Thumbnail').effect('bounce', 200);
+				$('#Thumbnail').effect('shake', 200);
+				//删除原先的缩略图
+				$('#Tumbnail_Con > li').remove();
+				//加载缩略图
+				for(var new_loop = 0; new_loop < THUMBNAIL_NUM; new_loop++){
+					$('#Tumbnail_Con').append("<li><img src='"+THUMBNAIL_SMAILL_PATH[new_loop]+"' /></li>");
+				}
+				//计算缩略图总宽度
+				$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
+				//小图标高亮归位
+				$('#J_Small_Hover').animate({'left': 0}, 800);
+				//移动偏移归位
+				$('#Thumbnail_Wrapper').scrollLeft(0);
+				//缩略图高亮移动
+				tumbnail_move();
+				//添加小图标点击事件
+				changeback();
+				//加载大图片
+				preload(THUMBNAIL_PATH[0], 1);
 			}
-			THUMBNAIL_NUM = THUMBNAIL_PATH.length;
-			//删除原先的缩略图
-			$('#Tumbnail_Con > li').remove();
-			//加载缩略图
-			for(var new_loop = 0; new_loop < THUMBNAIL_NUM; new_loop++){
-				$('#Tumbnail_Con').append("<li><img src='"+THUMBNAIL_SMAILL_PATH[new_loop]+"' /></li>");
-			}
-			//计算缩略图总宽度
-			$('#Tumbnail_Con').css('width', THUMBNAIL_NUM*45);
-			//小图标高亮归位
-			$('#J_Small_Hover').animate({'left': 0}, 800);
-			//移动偏移归位
-			$('#Thumbnail_Wrapper').scrollLeft(0);
-			//缩略图高亮移动
-			tumbnail_move();
-			//添加小图标点击事件
-			changeback();
 		}
 	});
 	 
@@ -517,18 +525,7 @@ $(document).ready(function() {
 		image_size = ratio(originImage.width, originImage.height);
 		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
 	}
-	$(window).resize(function() {
-		viewportwidth = $(window).width();
-		viewportheight = $(window).height();
-		viewratio = viewportwidth / viewportheight;
-		$('#Bg').css('height',viewportheight).css('width',viewportwidth);
-		$('#Bg > li').css('height',viewportheight).css('width',viewportwidth);
-		var originImage = new Image();
-		var my_img = $('#Bg > li > img');
-		originImage.src = my_img.attr('src');
-		image_size = ratio(originImage.width, originImage.height);
-		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
-	});
+	$(window).resize(checkOrientation);
 	if(window.addEventListener){
 		window.addEventListener("orientationchange", checkOrientation, false);
 	}
