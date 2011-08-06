@@ -455,9 +455,9 @@ $(document).ready(function() {
 	}
 	if(window.addEventListener){
 		alert(11)
-		window.addEventListener("touchstart", touchStart, false);
-		window.addEventListener("touchend", touchEnd, false);
-		window.addEventListener("touchmove", touchMove, false);
+		document.addEventListener("touchstart", touchStart, false);
+		document.addEventListener("touchend", touchEnd, false);
+		document.addEventListener("touchmove", touchMove, false);
 	}
 	//缩略图高亮移动
 	function tumbnail_move(){
