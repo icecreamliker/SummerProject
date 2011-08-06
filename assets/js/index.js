@@ -450,7 +450,6 @@ $(document).ready(function() {
   
 	}
 	if(window.addEventListener){
-		alert(1)
 		var m = document.getElementById('My_Scroll');
 		m.addEventListener("touchstart", touchStart, false);
 		m.addEventListener("touchend", touchEnd, false);
