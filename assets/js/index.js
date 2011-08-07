@@ -447,10 +447,34 @@ $(document).ready(function() {
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 //alert(off_size);
 		 //alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
-		 if(off_size >=50){//向右移动
-			alert('向右移动');
+		 if(off_size >= 50){//向右移动
+			//alert('向右移动');
+			if(IsClick){
+				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
+					THUMBNAIL_PREV = THUMBNAIL_INDEX;
+					++THUMBNAIL_INDEX;
+					$('#J_Small_Hover').animate({'left': '+=45'}, 800);
+					/* 可以切换图片了 */
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+					
+				}else{
+					//如果当前的hover已经是最后了，就不用向后移动了
+				}
+			}
 		 }else if(off_size <= -50){//向左移动
-			alert('向左移动');
+			//alert('向左移动');
+			if(IsClick){
+				if(THUMBNAIL_INDEX > 0){
+					THUMBNAIL_PREV = THUMBNAIL_INDEX;
+					--THUMBNAIL_INDEX;
+					$('#J_Small_Hover').animate({'left': '-=45'}, 800);
+					/* 可以切换图片了 */
+					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+					
+				}else{
+					//如果当前的hover已经是第一个了，就不用向前移动了
+				}
+			}
 		 }
 		 //所有动作处理完成以后，归零
 		 TOUCH_OFF_START = 0;
