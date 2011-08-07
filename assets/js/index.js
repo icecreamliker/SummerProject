@@ -442,9 +442,9 @@ $(document).ready(function() {
         // event.preventDefault();  
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 if(off_size >= 70 && IsMove){//向右移动
-			rightMove();
-		 }else if(off_size <= -70 && IsMove){//向左移动
 			leftMove();
+		 }else if(off_size <= -70 && IsMove){//向左移动
+			rightMove();
 		 }
 		 //所有动作处理完成以后，归零
 		 TOUCH_OFF_START = 0;
