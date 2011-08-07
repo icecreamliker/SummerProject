@@ -432,7 +432,7 @@ $(document).ready(function() {
 	function touchMove(event) {  
          //event.preventDefault(); 
          //if (!event.touches.length) return;  
-         var touch = event.touches[0];  
+         var touch = event.targetTouches[0];  
          TOUCH_OFF_END = touch.pageX;
 		 //alert(TOUCH_OFF_START)
 	}
