@@ -527,14 +527,12 @@ $(document).ready(function() {
 					$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+path+"' /></li>");
 					$('#Bg > li').first().animate({'left': (-viewportwidth)}, 1000, function(){
 						//删除前面所有的图片
-						$(this).remove();
-						/*
+						//$(this).remove();
 						var all_image = $('#Bg > li');
 						var all_len = all_image.length;
 						for(var j = 0; j < (all_len-1); j++){
 							all_image.eq(j).remove();
 						}
-						*/
 						IsClick = true;
 					});
 					$('#Bg > li').last().animate({'left': 0}, 1000);
@@ -543,14 +541,12 @@ $(document).ready(function() {
 					$('#Bg > li').first().animate({'left': 0}, 1000);
 					$('#Bg > li').last().animate({'left': viewportwidth}, 1000, function(){
 						//删除后面的所有图片
-						$(this).remove();
-						/*
+						//$(this).remove();
 						var all_image2 = $('#Bg > li');
 						var all_len2 = all_image2.length;
 						for(var j2 = 1; j2 < all_len2; j2++){
 							all_image2.eq(j2).remove();
 						}
-						*/
 						IsClick = true;
 					});
 				}
