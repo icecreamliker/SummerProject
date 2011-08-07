@@ -442,10 +442,10 @@ $(document).ready(function() {
         // var touch = event.changedTouches[0];  
         // TOUCH_OFF_END = touch.pageX;
 		// var c = event.targetTouches[0].pageX
-		 alert(TOUCH_OFF_START);
-		 alert(TOUCH_OFF_END);
+		 //alert(TOUCH_OFF_START);
+		 //alert(TOUCH_OFF_END);
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
-		 alert(off_size);
+		 //alert(off_size);
 		 //alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
 		 if(off_size >=50){//向右移动
 			alert('向右移动');
