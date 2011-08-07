@@ -441,9 +441,9 @@ $(document).ready(function() {
 	function touchEnd(event) {  
         // event.preventDefault();  
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
-		 if(off_size >= 150){//向右移动
+		 if(off_size >= 150 && IsMove){//向右移动
 			rightMove();
-		 }else if(off_size <= -150){//向左移动
+		 }else if(off_size <= -150 && IsMove){//向左移动
 			leftMove();
 		 }
 		 //所有动作处理完成以后，归零
