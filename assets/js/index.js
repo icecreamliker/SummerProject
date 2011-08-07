@@ -447,7 +447,7 @@ $(document).ready(function() {
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 //alert(off_size);
 		 //alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
-		 if(off_size >= 50){//向右移动
+		 if(off_size >= 150){//向右移动
 			//alert('向右移动');
 			if(IsClick){
 				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
@@ -461,7 +461,7 @@ $(document).ready(function() {
 					//如果当前的hover已经是最后了，就不用向后移动了
 				}
 			}
-		 }else if(off_size <= -50){//向左移动
+		 }else if(off_size <= -150){//向左移动
 			//alert('向左移动');
 			if(IsClick){
 				if(THUMBNAIL_INDEX > 0){
