@@ -428,15 +428,22 @@ $(document).ready(function() {
          var touch = event.touches[0];  
          TOUCH_OFF_START = touch.pageX;
 		 //alert(TOUCH_OFF_START)
+	}	
+	function touchStart(event) {  
+         //event.preventDefault(); 
+         //if (!event.touches.length) return;  
+         var touch = event.touches[0];  
+         TOUCH_OFF_END = touch.pageX;
+		 //alert(TOUCH_OFF_START)
 	}
 	function touchEnd(event) {  
         // event.preventDefault();  
         // if (!event.touches.length) return;  
-         var touch = event.changedTouches[0];  
-         TOUCH_OFF_END = touch.pageX;
-		 var c = event.targetTouches[0].pageX
+        // var touch = event.changedTouches[0];  
+        // TOUCH_OFF_END = touch.pageX;
+		// var c = event.targetTouches[0].pageX
+		 alert(TOUCH_OFF_START);
 		 alert(TOUCH_OFF_END);
-		 alert(c);
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
 		 if(off_size >=50){//向右移动
@@ -452,6 +459,7 @@ $(document).ready(function() {
 	if(window.addEventListener){
 		var m = document.getElementById('My_Scroll');
 		m.addEventListener("touchstart", touchStart, false);
+		m.addEventListener("touchmove", touchMove, false);
 		m.addEventListener("touchend", touchEnd, false);
 	}
 	//缩略图高亮移动
