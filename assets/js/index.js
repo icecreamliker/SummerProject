@@ -405,12 +405,19 @@ $(document).ready(function() {
 			if(THUMBNAIL_INDEX > 0){
 				THUMBNAIL_PREV = THUMBNAIL_INDEX;
 				--THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '-=45'}, 800);
+				$('#J_Small_Hover').animate({'left': '-=45'}, 600);
 				/* 可以切换图片了 */
 				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
 				
 			}else{
-				//如果当前的hover已经是第一个了，就不用向前移动了
+				//如果当前的hover已经是第一个了，就跳转到最后一个
+				THUMBNAIL_PREV = THUMBNAIL_INDEX;
+				THUMBNAIL_INDEX = (THUMBNAIL_NUM-1);
+				THUMBNAIL_OFF = (THUMBNAIL_NUM-8);
+				$('#Thumbnail_Wrapper').animate({'scrollLeft': THUMBNAIL_OFF*45}, 600);
+				$('#J_Small_Hover').animate({'left': 315}, 600);
+				/* 可以切换图片了 */
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
 			}
 		}
 	}
@@ -419,12 +426,19 @@ $(document).ready(function() {
 			if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
 				THUMBNAIL_PREV = THUMBNAIL_INDEX;
 				++THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '+=45'}, 800);
+				$('#J_Small_Hover').animate({'left': '+=45'}, 600);
 				/* 可以切换图片了 */
 				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
 				
 			}else{
-				//如果当前的hover已经是最后了，就不用向后移动了
+				//如果当前的hover已经是最后了，就跳转到第一个
+				THUMBNAIL_PREV = THUMBNAIL_INDEX;
+				THUMBNAIL_INDEX = 0;
+				THUMBNAIL_OFF = 0;
+				$('#Thumbnail_Wrapper').animate({'scrollLeft': 0}, 600);
+				$('#J_Small_Hover').animate({'left': 0}, 600);
+				/* 可以切换图片了 */
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
 			}
 		}
 	}
