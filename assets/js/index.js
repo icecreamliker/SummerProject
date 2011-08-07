@@ -429,7 +429,7 @@ $(document).ready(function() {
          TOUCH_OFF_START = touch.pageX;
 		 //alert(TOUCH_OFF_START)
 	}	
-	function touchStart(event) {  
+	function touchMove(event) {  
          //event.preventDefault(); 
          //if (!event.touches.length) return;  
          var touch = event.touches[0];  
