@@ -43,7 +43,7 @@ $(document).ready(function() {
 	 * 390px为缩略图的宽度，80px为缩略图的高度和menu高度之和，30px为menu的高度
 	 **/
 	var OFFVERTICAL = 80, OFFHORIZONTAL = 390, MENU = 30, IsAbout = false, IsContact = false, IsCategory = false, IsClick = true;//isclick是判断现在是否在进行动画，能不能点击
-	var TOUCH_OFF_START = 0, TOUCH_OFF_END = 0;
+	var TOUCH_OFF_START = 0, TOUCH_OFF_END = 0, IsMove = false;//判断是否有移动事件
 	var CATEGORY = ['Wedding day', 'Pre-wedding', 'Oversea Wedding', 'Baby', 'Landscape', 'City Snap', 'Travel Portraits', 'Commercial', 'Portraits'];
 	var CATEGORY_PIC = [{category:0, small:'assets/img/small1.png', url:'assets/img/icon1.png'},{category:0, small:'assets/img/small2.png', url:'assets/img/icon2.png'},{category:0, small:'assets/img/small3.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:0, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:0, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:0, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:0, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:0, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:0, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:0, small:'assets/img/small4.png', url:'assets/img/big11.jpg'},
 						{category:1, small:'assets/img/small1.png', url:'assets/img/big1.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big2.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big4.jpg'},{category:1, small:'assets/img/small5.png', url:'assets/img/big5.jpg'},{category:1, small:'assets/img/small6.png', url:'assets/img/big6.jpg'},{category:1, small:'assets/img/small7.png', url:'assets/img/big7.jpg'},{category:1, small:'assets/img/small1.png', url:'assets/img/big8.jpg'},{category:1, small:'assets/img/small2.png', url:'assets/img/big9.jpg'},{category:1, small:'assets/img/small3.png', url:'assets/img/big10.jpg'},{category:1, small:'assets/img/small4.png', url:'assets/img/big11.jpg'}];
@@ -392,93 +392,64 @@ $(document).ready(function() {
 	
 	//给左右大箭头添加事件
 	$('#left_btn').click(function(ev){
-			ev.preventDefault();
-			if(IsClick){
-				if(THUMBNAIL_INDEX > 0){
-					THUMBNAIL_PREV = THUMBNAIL_INDEX;
-					--THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '-=45'}, 800);
-					/* 可以切换图片了 */
-					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
-					
-				}else{
-					//如果当前的hover已经是第一个了，就不用向前移动了
-				}
-			}
+		ev.preventDefault();
+		leftMove();
 	});
 	$('#right_btn').click(function(ev){
-			ev.preventDefault();
-			if(IsClick){
-				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
-					THUMBNAIL_PREV = THUMBNAIL_INDEX;
-					++THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '+=45'}, 800);
-					/* 可以切换图片了 */
-					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
-					
-				}else{
-					//如果当前的hover已经是最后了，就不用向后移动了
-				}
-			}
+		ev.preventDefault();
+		rightMove();
+
 	});
+	function leftMove(){
+		if(IsClick){
+			if(THUMBNAIL_INDEX > 0){
+				THUMBNAIL_PREV = THUMBNAIL_INDEX;
+				--THUMBNAIL_INDEX;
+				$('#J_Small_Hover').animate({'left': '-=45'}, 800);
+				/* 可以切换图片了 */
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+				
+			}else{
+				//如果当前的hover已经是第一个了，就不用向前移动了
+			}
+		}
+	}
+	function rightMove(){
+		if(IsClick){
+			if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
+				THUMBNAIL_PREV = THUMBNAIL_INDEX;
+				++THUMBNAIL_INDEX;
+				$('#J_Small_Hover').animate({'left': '+=45'}, 800);
+				/* 可以切换图片了 */
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
+				
+			}else{
+				//如果当前的hover已经是最后了，就不用向后移动了
+			}
+		}
+	}
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-         //event.preventDefault(); 
-         //if (!event.touches.length) return;  
-         var touch = event.touches[0];  
-         TOUCH_OFF_START = touch.pageX;
-		 //alert(TOUCH_OFF_START)
+		//event.preventDefault(); 
+        TOUCH_OFF_START = event.touches[0].pageX;  
 	}	
 	function touchMove(event) {  
          //event.preventDefault(); 
-         //if (!event.touches.length) return;  
-         var touch = event.targetTouches[0];  
-         TOUCH_OFF_END = touch.pageX;
-		 //alert(TOUCH_OFF_START)
+		IsMove = true;
+        TOUCH_OFF_END = event.targetTouches[0].pageX;  
 	}
 	function touchEnd(event) {  
         // event.preventDefault();  
-        // if (!event.touches.length) return;  
-        // var touch = event.changedTouches[0];  
-        // TOUCH_OFF_END = touch.pageX;
-		// var c = event.targetTouches[0].pageX
-		 //alert(TOUCH_OFF_START);
-		 //alert(TOUCH_OFF_END);
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
-		 //alert(off_size);
-		 //alert(TOUCH_OFF_END+'===='+TOUCH_OFF_START);
 		 if(off_size >= 150){//向右移动
-			//alert('向右移动');
-			if(IsClick){
-				if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
-					THUMBNAIL_PREV = THUMBNAIL_INDEX;
-					++THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '+=45'}, 800);
-					/* 可以切换图片了 */
-					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
-					
-				}else{
-					//如果当前的hover已经是最后了，就不用向后移动了
-				}
-			}
+			rightMove();
 		 }else if(off_size <= -150){//向左移动
-			//alert('向左移动');
-			if(IsClick){
-				if(THUMBNAIL_INDEX > 0){
-					THUMBNAIL_PREV = THUMBNAIL_INDEX;
-					--THUMBNAIL_INDEX;
-					$('#J_Small_Hover').animate({'left': '-=45'}, 800);
-					/* 可以切换图片了 */
-					preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
-					
-				}else{
-					//如果当前的hover已经是第一个了，就不用向前移动了
-				}
-			}
+			leftMove();
 		 }
 		 //所有动作处理完成以后，归零
 		 TOUCH_OFF_START = 0;
 		 TOUCH_OFF_END = 0;
+		 IsMove = false;
   
 	}
 	if(window.addEventListener){
