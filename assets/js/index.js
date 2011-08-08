@@ -401,11 +401,24 @@ $(document).ready(function() {
 
 	});
 	function leftMove(){
+		var cur_left = 0;
 		if(IsClick){
 			if(THUMBNAIL_INDEX > 0){
 				THUMBNAIL_PREV = THUMBNAIL_INDEX;
 				--THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '-=45'}, 600);
+				cur_left = $('#J_Small_Hover').position().left - 45;
+				if(cur_left < 0){//如果小于0,则回归到0的位置，所有一切重新计算
+					THUMBNAIL_OFF = THUMBNAIL_INDEX;
+					$('#Thumbnail_Wrapper').animate({'scrollLeft': THUMBNAIL_OFF*45}, 600);
+					$('#J_Small_Hover').animate({'left': 0}, 600);
+				}else if(cur_left > 315){//如果大于315，则回归到315的位置，一切重新计算
+					THUMBNAIL_OFF = (THUMBNAIL_INDEX - 7);
+					$('#Thumbnail_Wrapper').animate({'scrollLeft': THUMBNAIL_OFF*45}, 600);
+					$('#J_Small_Hover').animate({'left': 315}, 600);
+				}else{//如果不在2侧，就进行正常的操作
+					$('#J_Small_Hover').animate({'left': cur_left}, 600);
+				}
+				
 				/* 可以切换图片了 */
 				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
 				
@@ -426,7 +439,18 @@ $(document).ready(function() {
 			if(THUMBNAIL_INDEX < (THUMBNAIL_NUM-1)){
 				THUMBNAIL_PREV = THUMBNAIL_INDEX;
 				++THUMBNAIL_INDEX;
-				$('#J_Small_Hover').animate({'left': '+=45'}, 600);
+				cur_left = $('#J_Small_Hover').position().left + 45;
+				if(cur_left < 0){//如果小于0,则回归到0的位置，所有一切重新计算
+					THUMBNAIL_OFF = THUMBNAIL_INDEX;
+					$('#Thumbnail_Wrapper').animate({'scrollLeft': THUMBNAIL_OFF*45}, 600);
+					$('#J_Small_Hover').animate({'left': 0}, 600);
+				}else if(cur_left > 315){//如果大于315，则回归到315的位置，一切重新计算
+					THUMBNAIL_OFF = (THUMBNAIL_INDEX - 7);
+					$('#Thumbnail_Wrapper').animate({'scrollLeft': THUMBNAIL_OFF*45}, 600);
+					$('#J_Small_Hover').animate({'left': 315}, 600);
+				}else{//如果不在2侧，就进行正常的操作
+					$('#J_Small_Hover').animate({'left': cur_left}, 600);
+				}
 				/* 可以切换图片了 */
 				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
 				
@@ -499,22 +523,6 @@ $(document).ready(function() {
 		var loader = $(new Image());
 		/* 读取缓存
 		if(loader.complete){
-			$('#Loader').css('display','none');
-			if(direction == 1){
-				$('#Bg').append("<li style='position:absolute; top:0; left:"+viewportwidth+"px; width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
-				$('#Bg > li').first().animate({'left': (-viewportwidth)}, 800, function(){
-					//删除前一张的图片
-					$(this).remove();
-				});
-				$('#Bg > li').last().animate({'left': 0}, 800);
-			}else{
-				$('#Bg').prepend("<li style='position:absolute; top:0; left:-"+viewportwidth+"px;width:"+viewportwidth+"px; margin:auto; text-align:center;'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;' src='"+path+"' /></li>");
-				$('#Bg > li').first().animate({'left': 0}, 800);
-				$('#Bg > li').last().animate({'left': viewportwidth}, 800, function(){
-					$(this).remove();
-				});
-			}
-			return;
 		}
 		*/
 		loader.load(function(){
