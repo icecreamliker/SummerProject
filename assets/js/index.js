@@ -329,8 +329,6 @@ $(document).ready(function() {
 					}
 				}
 				THUMBNAIL_NUM = THUMBNAIL_PATH.length;
-				//展示一些小效果
-				$('#Thumbnail').effect('bounce', 200);
 				//$('#Thumbnail').effect('shake', 200);
 				//删除原先的缩略图
 				$('#Tumbnail_Con > li').remove();
@@ -348,8 +346,12 @@ $(document).ready(function() {
 				tumbnail_move();
 				//添加小图标点击事件
 				changeback();
-				//加载大图片
-				preload(THUMBNAIL_PATH[0], 1);
+				//展示一些小效果
+				$('#Thumbnail').effect('bounce', 200,function(){
+					//加载大图片
+					preload(THUMBNAIL_PATH[0], 1);
+				});
+
 			}
 		}
 	});
