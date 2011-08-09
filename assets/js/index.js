@@ -497,11 +497,11 @@ $(document).ready(function() {
 	}
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-		event.preventDefault(); 
+		//event.preventDefault(); 
         TOUCH_OFF_START = event.touches[0].pageX;  
 	}	
 	function touchMove(event) {  
-        event.preventDefault();
+        //event.preventDefault();
 		if(event.targetTouches.length > 1){
 			IsMove = false;
 			return;
@@ -510,7 +510,7 @@ $(document).ready(function() {
         TOUCH_OFF_END = event.targetTouches[0].pageX;  
 	}
 	function touchEnd(event) {  
-         event.preventDefault();  
+         //event.preventDefault();  
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 if(off_size >= 70 && IsMove){//向右移动
 			leftMove();
