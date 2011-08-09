@@ -72,7 +72,7 @@ $(document).ready(function() {
 	 **/
 	$('#Bg').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
 	//$('#Mask').attr('style','width:' + viewportwidth + 'px;height:' + viewportheight + 'px;');
-	$('#J_Pop').height(viewportheight-MENU-1);
+	
 	$('#Thumbnail').draggable({ containment: [0, 0, viewportwidth-OFFHORIZONTAL, viewportheight-OFFVERTICAL], cancel:'.move_cancle' });
 	//解决ie8下hover效果
 	$('.flickr').mouseenter(function(){
@@ -107,9 +107,38 @@ $(document).ready(function() {
 	}
 	$('#J_Big_Hover').css('top',CATEGORY_LEN[0]);
 	//初始化about和contact页面的高度
-	$('#J_About_Top').css('marginTop', viewportheight-660);
-	$('#J_Contact_Top').css('marginTop', viewportheight-520);
-	
+	//$('#J_About_Top').css('marginTop', viewportheight-660);
+	//$('#J_Contact_Top').css('marginTop', viewportheight-520);
+	//初始化j_pop的宽度
+	function CalculatePop(){
+		$('#J_Pop').height(viewportheight-MENU-1);
+		if(viewportwidth < 700){
+			$('#J_Pop').css('width', viewportwidth);
+		}
+	}
+	function CalculateAbout(){
+		//alert($('#J_About_Top').height());  622
+		if((viewportheight - 31 - 30 - 591) >= 0){
+			$('#J_About_Top').css('marginTop', (viewportheight - 31 - 30 - 591)).css('height','auto');
+		}else if((viewportheight - 31 - 591) >= 0){
+			$('#J_About_Top').css('marginTop', 0).css('height','auto');
+		}else{
+			$('#J_About_Top').css('marginTop', 0).css('height',(viewportheight-31));
+		}
+	}
+	function CalculateContact(){
+		//alert($('#J_Contact_Top').height());  461
+		if((viewportheight - 31 - 30 - 430) >= 0){
+			$('#J_Contact_Top').css('marginTop', (viewportheight - 31 - 30 - 430)).css('height','auto');
+		}else if((viewportheight - 31 - 430) >= 0){
+			$('#J_Contact_Top').css('marginTop', 0).css('height','auto');
+		}else{
+			$('#J_Contact_Top').css('marginTop', 0).css('height',(viewportheight-31));
+		}
+	}
+	CalculatePop();
+	CalculateAbout();
+	CalculateContact();
 	var fir_loader = $(new Image());
 	fir_loader.load(function(){
 		image_size = ratio(fir_loader.get(0).width, fir_loader.get(0).height);
@@ -468,16 +497,20 @@ $(document).ready(function() {
 	}
 	//给ipad，iphone添加手指滑动事件
 	function touchStart(event) {  
-		//event.preventDefault(); 
+		event.preventDefault(); 
         TOUCH_OFF_START = event.touches[0].pageX;  
 	}	
 	function touchMove(event) {  
-         //event.preventDefault(); 
+        event.preventDefault();
+		if(event.targetTouches.length > 1){
+			IsMove = false;
+			return;
+		}
 		IsMove = true;
         TOUCH_OFF_END = event.targetTouches[0].pageX;  
 	}
 	function touchEnd(event) {  
-        // event.preventDefault();  
+         event.preventDefault();  
 		 var off_size = TOUCH_OFF_END-TOUCH_OFF_START;
 		 if(off_size >= 70 && IsMove){//向右移动
 			leftMove();
@@ -579,6 +612,9 @@ $(document).ready(function() {
 		originImage.src = my_img.attr('src');
 		image_size = ratio(originImage.width, originImage.height);
 		my_img.css('width',image_size[0]).css('height',image_size[1]).css('marginTop',image_size[2]);
+		CalculatePop();
+		CalculateAbout();
+		CalculateContact();
 	}
 	$(window).resize(checkOrientation);
 	if(window.addEventListener){

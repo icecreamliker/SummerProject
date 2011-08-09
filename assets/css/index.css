@@ -185,7 +185,7 @@ a, a:hover {
 }
 
 #J_Pop_Contact .title {
-	margin-top:150px;
+	margin-top:0px;
 	font-size:25px;
 	font-weight:400;
 }
@@ -234,7 +234,7 @@ a, a:hover {
 
 #J_Pop_Contact .ways {
 	height:86px;
-	width:660px;
+	width:590px;
 }
 
 #J_Pop_Contact .ways .fleft {
@@ -310,7 +310,6 @@ a, a:hover {
 }
 
 #J_Pop_About .title {
-	margin-top:25px;
 }
 
 #J_Pop_About .title span {
