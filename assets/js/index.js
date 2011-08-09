@@ -118,9 +118,9 @@ $(document).ready(function() {
 	}
 	function CalculateAbout(){
 		//alert($('#J_About_Top').height());  622
-		if((viewportheight - 31 - 30 - 791) >= 0){
-			$('#J_About_Top').css('marginTop', (viewportheight - 31 - 30 - 791)).css('height','auto');
-		}else if((viewportheight - 31 - 791) >= 0){
+		if((viewportheight - 31 - 30 - 591) >= 0){
+			$('#J_About_Top').css('marginTop', (viewportheight - 31 - 30 - 591)).css('height','auto');
+		}else if((viewportheight - 31 - 591) >= 0){
 			$('#J_About_Top').css('marginTop', 0).css('height','auto');
 		}else{
 			$('#J_About_Top').css('marginTop', 0).css('height',(viewportheight-31));
