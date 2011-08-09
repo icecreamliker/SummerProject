@@ -146,6 +146,7 @@ $(document).ready(function() {
 		//初始化桌面背景
 		$('#Bg').append("<li style='position:absolute;left:0;top:0;width:"+viewportwidth+"px; height:"+viewportheight+"px; margin:auto; text-align:center;	opacity:0; filter:alpha(opacity=0);'><img style='width:"+image_size[0]+"px;height:"+image_size[1]+"px;margin-top:"+image_size[2]+"px;' src='"+THUMBNAIL_PATH[0]+"' /></li>");
 		$('#Bg > li').animate({opacity: 1}, 1200);
+		fir_loader = null;
 	});
 	fir_loader.attr('src', THUMBNAIL_PATH[0]);		
 
@@ -596,6 +597,7 @@ $(document).ready(function() {
 			}else{
 				//延迟加载的话，就不执行了
 			}
+			loader = null;
 			//ending
 		});
 		loader.attr('src', path);
