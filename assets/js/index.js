@@ -493,7 +493,7 @@ $(document).ready(function() {
 				$('#Thumbnail_Wrapper').animate({'scrollLeft': 0}, 600);
 				$('#J_Small_Hover').animate({'left': 0}, 600);
 				/* 可以切换图片了 */
-				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 0);
+				preload(THUMBNAIL_PATH[THUMBNAIL_INDEX], 1);
 			}
 		}
 	}
