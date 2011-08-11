@@ -1,4 +1,9 @@
 $(document).ready(function() {
+	if (navigator.userAgent.match(/like Mac OS X/i)) {
+                $('#Thumbnail').css('display','none');
+        }else{
+			    $('#Thumbnail').css('display','block');
+		}
 	/**
 	 * 获取屏幕的实际宽度和高度
 	 **/
