@@ -352,6 +352,8 @@ $(document).ready(function() {
 				tumbnail_move();
 				//添加小图标点击事件
 				changeback();
+				//关闭category
+				$('#CategoryMenu').toggle( 'slide', {direction:'down'}, 400);
 				//展示一些小效果,判断ios设备
 				if(navigator.userAgent.match(/like Mac OS X/i)){
 					preload(THUMBNAIL_PATH[0], 1);
